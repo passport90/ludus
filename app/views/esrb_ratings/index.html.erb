@@ -1,0 +1,15 @@
+<h1>ESRB Ratings</h1>
+
+<p>
+  <% @esrb_ratings.each do |esrb_rating| %>
+    <%= esrb_rating.name %> (<%= esrb_rating.symbol %>)<br />
+  <% end %>
+</p>
+
+<p>
+  <%= link_to 'Create New', new_esrb_rating_path %><br />
+</p>
+
+<p>
+  <%= link_to 'Back to Home', root_path %>
+</p>

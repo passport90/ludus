@@ -1,0 +1,19 @@
+<h1>New ESRB Rating</h1>
+
+<%= form_with model: @esrb_rating do |f| %>
+  <p>
+    <%= f.label(:name, "Name") %> <br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label(:symbol, "Symbol") %> <br />
+    <%= f.text_field :symbol %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<p>
+  <%= link_to 'Back to ESRB Ratings', esrb_ratings_path %>
+</p>
