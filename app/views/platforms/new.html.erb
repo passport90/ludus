@@ -1,0 +1,23 @@
+<h1>New Platform</h1>
+
+<%= form_with model: @platform do |f| %>
+  <p>
+    <%= f.label(:name, "Name") %> <br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label(:release_date, "Release Date") %> <br />
+    <%= f.date_field :release_date %>
+  </p>
+  <p>
+    <%= f.label(:publisher_id, "Publisher") %> <br />
+    <%= f.collection_select(:publisher_id, Publisher.select(:id, :name).order(:name).all, :id, :name) %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<p>
+  <%= link_to 'Back to Platforms', platforms_path %>
+</p>

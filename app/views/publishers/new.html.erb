@@ -2,10 +2,14 @@
 
 <%= form_with model: @publisher do |f| %>
   <p>
-    <%= label_tag(:name, "Name") %> <br />
+    <%= f.label(:name, "Name") %> <br />
     <%= f.text_field :name %>
   </p>
   <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
+
+<p>
+  <%= link_to 'Back to Publishers', publishers_path %>
+</p>

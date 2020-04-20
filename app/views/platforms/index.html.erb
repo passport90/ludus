@@ -1,16 +1,14 @@
-<h1>Publishers</h1>
+<h1>Platforms</h1>
 
 <p>
-  <% @publishers.each do |publisher| %>
-    <%= publisher.name %><br />
+  <% @platforms.each do |platform| %>
+    <%= link_to platform.name, platform_path(platform) %><br />
   <% end %>
 </p>
 
 <p>
   <%= link_to 'Create New', new_platform_path %><br />
 </p>
-
 <p>
   <%= link_to 'Back to Home', root_path %>
-
 </p>

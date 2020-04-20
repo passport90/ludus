@@ -1,0 +1,13 @@
+<%= tag.h1 @platform.name %>
+
+<p>
+  Platform <br />
+  Release Date:
+    <%= @platform.release_date.to_formatted_s(:long) %> <br />
+  Publisher:
+    <%= @platform.publisher.name %>
+</p>
+
+<p>
+  <%= link_to "Back to Platforms", platforms_path %>
+</p>
