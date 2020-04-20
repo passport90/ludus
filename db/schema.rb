@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_160306) do
+ActiveRecord::Schema.define(version: 2020_04_20_170403) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "ltree"
   enable_extension "plpgsql"
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.ltree "path", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["path"], name: "index_genres_on_path", using: :gist
+  end
 
   create_table "platforms", force: :cascade do |t|
     t.string "name", null: false
