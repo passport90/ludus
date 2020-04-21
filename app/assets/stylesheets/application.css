@@ -28,3 +28,7 @@ a:hover {
 p.home > a {
   font-size: 2em;
 }
+
+input, select {
+  font-size: 1em;
+}

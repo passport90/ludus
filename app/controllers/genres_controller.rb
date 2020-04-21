@@ -21,6 +21,6 @@ private
   end
 
   def to_path(name)
-    name.split(' > ').map { |token| token.downcase.gsub(/\W/, '_') }.join('.')
+    name.split(' » ').map { |token| token.downcase.gsub(/\W/, '_') }.join('.')
   end
 end
