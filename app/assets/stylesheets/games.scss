@@ -8,3 +8,52 @@ img.game {
   // width: auto;
   height: auto;
 }
+
+h1.game_header {
+  margin-block-end: 0;
+}
+p.game_header {
+  margin-block-start: 0;
+  font-weight: normal;
+}
+
+
+table {
+  table-layout: auto;
+  border-collapse: collapse;
+  border: 3px solid;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid;
+}
+
+th {
+  text-align: left;
+  background-color: black;
+  font-weight: bold;
+  color: white;
+}
+
+div.score {
+  margin-block-end: 10px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: middle;
+  border-radius: 10px;
+}
+div.score.red {
+  background-color: #f00;
+}
+div.score.yellow {
+  background-color: #fc3;
+}
+div.score.green {
+  background-color: #6c3;
+}

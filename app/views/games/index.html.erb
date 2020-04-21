@@ -1,11 +1,42 @@
 <h1>Games</h1>
 
-<p>
-  <% @games.each do |game| %>
-    <%= link_to "#{game.title} (#{game.platform.name})", game_path(game) %><br />
-  <% end %>
-</p>
+<% if @week_start %>
+  <p>
+    <%= @week_start.strftime('Week %V, %G') %><br />
+    <%= @week_start.strftime('%-d %B %Y') %> - <%= (@week_start + 6.days).strftime('%-d %B %Y') %>
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Platform</th>
+        <th>Release Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @games.each do |game| %>
+        <tr>
+          <td><%= game.title %></td>
+          <td><%= game.platform.name %></td>
+          <td><%= game.release_date.strftime('%-d %B %Y') %></td>
+          <td>
+            <%= link_to 'Detail', game_path(game) %><br />
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
+<% else %>
+  <p>All Games</p>
+  <p>
+    Weeks: <br />
+    <% @weeks.each do |week| %>
+      <%= link_to week, games_path(week: week.split.reverse.join) %><br />
+    <% end %>
+  </p>
+<% end %>
 <p>
   <%= link_to 'Create New', new_game_path %><br />
 </p>
