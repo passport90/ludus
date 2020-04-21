@@ -10,10 +10,6 @@ class PlatformsController < ApplicationController
 
   def new
     @platform = Platform.new
-    @publishers = Publisher.select(:id, :name).order(:name).all
-    @publisher_options = @publishers.map do |publisher|
-      [publisher.name, publisher.id]
-    end
   end
 
   def create

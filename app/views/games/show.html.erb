@@ -1,0 +1,25 @@
+<header>
+  <%= tag.h1 @game.title %>
+  <%= tag.p @game.platform.name %>
+</header>
+
+<p>
+  <%= image_tag("games/#{@game.id}.jpg", class: 'game') %>
+</p>
+<p>
+  Game <br />
+  Release Date:
+    <%= @game.release_date.to_formatted_s(:long) %><br />
+  Publisher:
+    <%= @game.publisher.name %><br />
+  Genre:
+    <%= @game.genre.name %><br />
+  ESRB Rating:
+    <%= @game.esrb_rating.name %><br />
+  Score:
+    <%= @game.score %>
+</p>
+
+<p>
+  <%= link_to "Back to Games", games_path %>
+</p>

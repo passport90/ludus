@@ -1,0 +1,39 @@
+<h1>New Game</h1>
+
+<%= form_with model: @game do |f| %>
+  <p>
+    <%= f.label(:title, "Title") %> <br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label(:platform_id, "Platform") %> <br />
+    <%= f.collection_select(:platform_id, Platform.select(:id, :name).order(:name).all, :id, :name) %>
+  </p>
+  <p>
+    <%= f.label(:release_date, "Release Date") %> <br />
+    <%= f.date_field :release_date %>
+  </p>
+  <p>
+    <%= f.label(:publisher_id, "Publisher") %> <br />
+    <%= f.collection_select(:publisher_id, Publisher.select(:id, :name).order(:name).all, :id, :name) %>
+  </p>
+  <p>
+    <%= f.label(:genre_id, "Genre") %> <br />
+    <%= f.collection_select(:genre_id, Genre.select(:id, :name).order(:name).all, :id, :name) %>
+  </p>
+  <p>
+    <%= f.label(:esrb_rating_id, "ESRB Rating") %> <br />
+    <%= f.collection_select(:esrb_rating_id, EsrbRating.select(:id, :name).order(:name).all, :id, :name) %>
+  </p>
+  <p>
+    <%= f.label(:score, "Score") %> <br />
+    <%= f.number_field(:score, in: 0..100) %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<p>
+  <%= link_to 'Back to Games', games_path %>
+</p>

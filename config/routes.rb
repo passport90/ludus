@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :esrb_ratings
+  resources :games, only: [:index, :show, :new, :create]
+  resources :esrb_ratings, only: [:index, :new, :create]
   resources :genres, only: [:index, :new, :create]
   resources :platforms, only: [:index, :show, :new, :create]
   resources :publishers, only: [:index, :new, :create]

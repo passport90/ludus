@@ -1,0 +1,14 @@
+<h1>Games</h1>
+
+<p>
+  <% @games.each do |game| %>
+    <%= link_to "#{game.title} (#{game.platform.name})", game_path(game) %><br />
+  <% end %>
+</p>
+
+<p>
+  <%= link_to 'Create New', new_game_path %><br />
+</p>
+<p>
+  <%= link_to 'Back to Home', root_path %>
+</p>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_172417) do
+ActiveRecord::Schema.define(version: 2020_04_20_173237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -21,6 +21,23 @@ ActiveRecord::Schema.define(version: 2020_04_20_172417) do
     t.string "symbol", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string "title", null: false
+    t.bigint "platform_id", null: false
+    t.date "release_date", null: false
+    t.bigint "publisher_id", null: false
+    t.bigint "genre_id", null: false
+    t.bigint "esrb_rating_id", null: false
+    t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["esrb_rating_id"], name: "index_games_on_esrb_rating_id"
+    t.index ["genre_id"], name: "index_games_on_genre_id"
+    t.index ["platform_id"], name: "index_games_on_platform_id"
+    t.index ["publisher_id"], name: "index_games_on_publisher_id"
+    t.index ["release_date", "title"], name: "index_games_on_release_date_and_title"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -47,5 +64,9 @@ ActiveRecord::Schema.define(version: 2020_04_20_172417) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "games", "esrb_ratings"
+  add_foreign_key "games", "genres"
+  add_foreign_key "games", "platforms"
+  add_foreign_key "games", "publishers"
   add_foreign_key "platforms", "publishers"
 end
