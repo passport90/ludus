@@ -3,7 +3,7 @@ class GamesController < ApplicationController
     @week_start = Date.strptime(params[:week], '%G%V') if params[:week]
     if @week_start
       query = Game.includes(:platform)
-                  .select(:id, :title, :platform_id, :release_date)
+                  .select(:id, :title, :platform_id, :release_date, :score)
       query = filter_by_week(query)
       @games = query.order(:release_date, :title).all
     else
@@ -16,7 +16,9 @@ class GamesController < ApplicationController
     @game = Game.select(:id, :title, :platform_id, :release_date, :publisher_id,
                         :genre_id, :esrb_rating_id, :score)
                 .find(params[:id])
-    @score_color = if @game.score < 50
+    @score_color = if @game.score == nil
+      'gray'
+    elsif @game.score < 50
       'red'
     elsif @game.score < 75
       'yellow'
@@ -33,7 +35,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
 
     @game.save
-    redirect_to games_url
+    redirect_to games_url(week: @game.release_date.strftime('%G%V'))
   end
 
 private

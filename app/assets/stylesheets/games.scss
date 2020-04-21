@@ -48,12 +48,23 @@ div.score {
   vertical-align: middle;
   border-radius: 10px;
 }
-div.score.red {
+td.score {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1em;
+  color: white;
+  font-weight: bold;
+  border: black solid 1px;
+}
+.score.gray {
+  background-color: #ccc;
+}
+.score.red {
   background-color: #f00;
 }
-div.score.yellow {
+.score.yellow {
   background-color: #fc3;
 }
-div.score.green {
+.score.green {
   background-color: #6c3;
 }

@@ -6,5 +6,6 @@ class CreateEsrbRatings < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :esrb_ratings, :name
   end
 end

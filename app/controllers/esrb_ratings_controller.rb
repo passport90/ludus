@@ -1,6 +1,6 @@
 class EsrbRatingsController < ApplicationController
   def index
-    @esrb_ratings = EsrbRating.select(:name, :symbol).all
+    @esrb_ratings = EsrbRating.select(:name, :symbol).order(:name).all
   end
 
   def new

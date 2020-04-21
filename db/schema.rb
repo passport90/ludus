@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_04_20_173237) do
     t.string "symbol", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_esrb_ratings_on_name"
   end
 
   create_table "games", force: :cascade do |t|

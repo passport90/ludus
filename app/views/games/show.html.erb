@@ -4,9 +4,9 @@
 </header>
 
 <p>
-  <%= image_tag("games/#{@game.id}.jpg", class: 'game') %>
+  <%= image_tag("/images/games/#{@game.id}.jpg", class: 'game') %>
 </p>
-<%= tag.div @game.score, class: "score #{@score_color}" %>
+<%= tag.div (('N/A' unless @game.score) || @game.score), class: "score #{@score_color}" %>
 <table>
   <tbody>
     <tr>
