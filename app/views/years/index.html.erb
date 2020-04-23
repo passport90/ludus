@@ -1,0 +1,18 @@
+<h1>Games</h1>
+<p>
+  <% if @years.length > 0 %>
+    Years: <br />
+    <% @years.each do |year| %>
+      <%= link_to year, weeks_index_path(year: year) %><br />
+    <% end %>
+  <% else %>
+    There are no games.
+  <% end %>
+</p>
+
+<p>
+  <%= link_to 'Create New', new_game_path %>
+</p>
+<p>
+  <%= link_to 'Back to Home', root_path %>
+</p>

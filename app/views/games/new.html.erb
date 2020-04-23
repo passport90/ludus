@@ -19,7 +19,7 @@
   </p>
   <p>
     <%= f.label(:genre_id, "Genre") %> <br />
-    <%= f.collection_select(:genre_id, Genre.select(:id, :name).order(:name).all, :id, :name) %>
+    <%= f.collection_select(:genre_id, Genre.select(:id, :name).order(:path).all, :id, :name) %>
   </p>
   <p>
     <%= f.label(:esrb_rating_id, "ESRB Rating") %> <br />

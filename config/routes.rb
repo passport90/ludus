@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'weeks/index'
+  get 'years/index'
   resources :games, only: [:index, :show, :new, :create]
   resources :esrb_ratings, only: [:index, :new, :create]
   resources :genres, only: [:index, :new, :create]

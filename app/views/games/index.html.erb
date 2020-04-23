@@ -1,10 +1,11 @@
 <h1>Games</h1>
 
-<% if @week_start %>
-  <p>
-    <%= @week_start.strftime('Week %V, %G') %><br />
-    <%= @week_start.strftime('%-d %B %Y') %> - <%= (@week_start + 6.days).strftime('%-d %B %Y') %>
-  </p>
+<p>
+  <%= @week_start.strftime('Week %V, %G') %><br />
+  <%= @week_start.strftime('%-d %B %Y') %> - <%= (@week_start + 6.days).strftime('%-d %B %Y') %>
+</p>
+  <p><%= @games.length %> Games</p>
+<% if @games.length > 0 %>
   <table>
     <thead>
       <tr>
@@ -21,8 +22,8 @@
         <tr>
           <td><%= game.title %></td>
           <td><%= game.platform.name %></td>
-          <td><%= game.release_date.strftime('%-d %B %Y') %></td>
-          <%= tag.td game.score, class: "score #{score_color}" %>
+          <td><%= game.release_date.strftime('%A, %-d %B %Y') %></td>
+          <%= tag.td ((game.score if game.score) || 'N/A'), class: "score #{score_color}" %>
           <td>
             <%= link_to 'Detail', game_path(game) %><br />
           </td>
@@ -30,22 +31,16 @@
       <% end %>
     </tbody>
   </table>
-
 <% else %>
-  <p>All Games</p>
-  <p>
-    Weeks: <br />
-    <% @weeks.each do |week| %>
-      <%= link_to week, games_path(week: week.split.reverse.join) %><br />
-    <% end %>
-  </p>
+  <p>There are no games released this week.</p>
 <% end %>
 <p>
-  <%= link_to 'Create New', new_game_path %><br />
+  <%= link_to 'Create New', new_game_path %>
 </p>
 <p>
-  <% if @week_start %>
-    <%= link_to 'Back to All Games', games_path %><br />
-  <% end %>
+  <%= link_to 'Prev Week', games_path(week: @prev_week.cweek, year: @prev_week.cwyear) %><br />
+  <%= link_to 'Next Week', games_path(week: @next_week.cweek, year: @next_week.cwyear) %><br />
+  <%= link_to "Back to #{@week_start.cwyear}", weeks_index_path(year: @week_start.cwyear) %><br />
+  <%= link_to "Back to Years", years_index_path %><br />
   <%= link_to 'Back to Home', root_path %>
 </p>

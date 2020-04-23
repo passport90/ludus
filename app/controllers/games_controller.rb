@@ -1,15 +1,12 @@
 class GamesController < ApplicationController
   def index
-    @week_start = Date.strptime(params[:week], '%G%V') if params[:week]
-    if @week_start
-      query = Game.includes(:platform)
-                  .select(:id, :title, :platform_id, :release_date, :score)
-      query = filter_by_week(query)
-      @games = query.order(:release_date, :title).all
-    else
-      @weeks = Game.order(:week).distinct
-                   .pluck("to_char(release_date, 'IW IYYY') as week")
-    end
+    @week_start = week_start
+    @next_week = @week_start + 1.week
+    @prev_week = @week_start - 1.week
+    query = Game.includes(:platform)
+                .select(:id, :title, :platform_id, :release_date, :score)
+    query = filter_by_week(query)
+    @games = query.order(:release_date, :title, :platform_id).all
   end
 
   def show
@@ -35,7 +32,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
 
     @game.save
-    redirect_to games_url(week: @game.release_date.strftime('%G%V'))
+    redirect_to game_url(@game)
   end
 
 private
@@ -49,9 +46,23 @@ private
     @models.map { |model| [model.name, model.id] }
   end
 
-  def filter_by_week(query)
-    return query unless @week_start
+  def week_start
+    year = params[:year]
+    unless year
+      year = Game.select(:release_date).order(release_date: :desc).first
+                  .release_date.cwyear
+    end
+    week = params[:week]
+    unless week
+      week = Game.select(:release_date).order(release_date: :desc)
+                  .where("extract(isoyear from release_date) = ?", year)
+                  .first.release_date.cweek
+    end
 
+    Date.strptime(year.to_s + week.to_s.rjust(2, '0'), '%G%V')
+  end
+
+  def filter_by_week(query)
     query.where('release_date >= ?', @week_start)
          .where('release_date < ?', @week_start + 1.week)
   end
