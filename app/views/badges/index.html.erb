@@ -1,0 +1,15 @@
+<h1>Badges</h1>
+
+<p>
+  <% @badges.each do |badge| %>
+    <%= link_to "#{badge.symbol} #{badge.name}", badge_path(badge) %><br />
+  <% end %>
+</p>
+
+<p>
+  <%= link_to 'Create New', new_badge_path %><br />
+</p>
+
+<p>
+  <%= link_to 'Back to Home', root_path %>
+</p>

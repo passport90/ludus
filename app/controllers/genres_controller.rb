@@ -5,8 +5,7 @@ class GenresController < ApplicationController
 
   def show
     @genre = Genre.find(params[:id])
-    @games = Game.where(genre: @genre)
-                 .order(release_date: :desc, title: :asc).all
+    @games = @genre.games.order(release_date: :desc, title: :asc).all
   end
 
   def new
@@ -18,7 +17,7 @@ class GenresController < ApplicationController
     @genre.path = to_path(@genre.name)
 
     @genre.save
-    redirect_to genres_url
+    redirect_to genres_path
   end
 
 private

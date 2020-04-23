@@ -16,7 +16,7 @@ class PlatformsController < ApplicationController
     @platform = Platform.new(platform_params)
 
     @platform.save
-    redirect_to platforms_url
+    redirect_to platforms_path
   end
 
 private

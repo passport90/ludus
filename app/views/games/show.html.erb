@@ -6,6 +6,13 @@
   <p class="game_header"><%= link_to @game.platform.name, platform_path(@game.platform) %></p>
 </header>
 <%= tag.div (('N/A' unless @game.score) || @game.score), class: "score #{@score_color}" %>
+<% if @game.badges.length > 0 %>
+  <p>
+    <% @game.badges.each do |badge| %>
+    <%= badge.symbol %> <%= link_to badge.name, badge_path(badge) %><br />
+    <% end %>
+  </p>
+<% end %>
 <table>
   <tbody>
     <tr>
@@ -30,6 +37,8 @@
 </table>
 
 <p>
+  <%= link_to "Award Badge", new_badges_game_path('game[id]': @game.id) %> <br />
   <%= link_to "Back to Games This Week", games_path(week: @game.release_date.cweek, year: @game.release_date.cwyear) %> <br />
-  <%= link_to "Back to All Games", years_path %>
+  <%= link_to "Back to All Games", years_path %><br />
+  <%= link_to "Back to Home", root_path %>
 </p>

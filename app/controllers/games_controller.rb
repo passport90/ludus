@@ -32,7 +32,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
 
     @game.save
-    redirect_to game_url(@game)
+    redirect_to game_path(@game)
   end
 
 private

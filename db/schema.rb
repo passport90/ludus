@@ -10,11 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_173237) do
+ActiveRecord::Schema.define(version: 2020_04_23_071315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "plpgsql"
+
+  create_table "badges", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "symbol", null: false
+    t.date "award_date", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["award_date", "name"], name: "index_badges_on_award_date_and_name"
+  end
+
+  create_table "badges_games", id: false, force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.bigint "badge_id", null: false
+    t.index ["badge_id", "game_id"], name: "index_badges_games_on_badge_id_and_game_id", unique: true
+    t.index ["game_id", "badge_id"], name: "index_badges_games_on_game_id_and_badge_id", unique: true
+  end
 
   create_table "esrb_ratings", force: :cascade do |t|
     t.string "name", null: false

@@ -5,8 +5,7 @@ class PublishersController < ApplicationController
 
   def show
     @publisher = Publisher.find(params[:id])
-    @games = Game.where(publisher: @publisher)
-                 .order(release_date: :desc, title: :asc).all
+    @games = @publisher.games.order(release_date: :desc, title: :asc).all
   end
 
   def new
@@ -17,7 +16,7 @@ class PublishersController < ApplicationController
     @publisher = Publisher.new(publisher_params)
 
     @publisher.save
-    redirect_to publishers_url
+    redirect_to publishers_path
   end
 
 private

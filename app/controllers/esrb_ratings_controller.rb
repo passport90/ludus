@@ -11,7 +11,7 @@ class EsrbRatingsController < ApplicationController
     @esrb_rating = EsrbRating.new(rating_params)
 
     @esrb_rating.save
-    redirect_to esrb_ratings_url
+    redirect_to esrb_ratings_path
   end
 
 private
