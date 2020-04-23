@@ -28,6 +28,6 @@
 </table>
 
 <p>
-  <%= link_to "Back to Games This Week", games_path(week: @game.release_date.strftime('%G%V')) %> <br />
-  <%= link_to "Back to All Games", games_path %>
+  <%= link_to "Back to Games This Week", games_path(week: @game.release_date.cweek, week: @year.release_date.cwyear) %> <br />
+  <%= link_to "Back to All Games", years_path %>
 </p>

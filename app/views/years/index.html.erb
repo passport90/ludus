@@ -3,7 +3,7 @@
   <% if @years.length > 0 %>
     Years: <br />
     <% @years.each do |year| %>
-      <%= link_to year, weeks_index_path(year: year) %><br />
+      <%= link_to year, weeks_path(year: year) %><br />
     <% end %>
   <% else %>
     There are no games.
