@@ -4,7 +4,7 @@ class PlatformsController < ApplicationController
   end
 
   def show
-    @platform = Platform.select(:name, :release_date, :publisher_id)
+    @platform = Platform.select(:id, :name, :release_date, :publisher_id)
                         .find(params[:id])
   end
 

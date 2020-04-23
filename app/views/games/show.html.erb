@@ -3,7 +3,7 @@
 </p>
 <header>
   <h1 class="game_header"><%= @game.title %></h1>
-  <p class="game_header"><%= @game.platform.name %></p>
+  <p class="game_header"><%= link_to @game.platform.name, platform_path(@game.platform) %></p>
 </header>
 <%= tag.div (('N/A' unless @game.score) || @game.score), class: "score #{@score_color}" %>
 <table>
