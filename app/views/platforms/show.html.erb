@@ -6,11 +6,16 @@
   <tbody>
     <tr>
       <th scope="row">Release Date</th>
-      <td><%= @platform.release_date.strftime('%-d %B %Y') %></td>
+      <td>
+        <%= link_to @platform.release_date.strftime('%-d %B %Y'),
+                    games_path(year: @platform.release_date.cwyear, week: @platform.release_date.cweek) %>
+      </td>
     </tr>
     <tr>
       <th scope="row">Publisher</th>
-      <td><%= @platform.publisher.name %></td>
+      <td>
+        <%= link_to @platform.publisher.name, publisher_path(@platform.publisher) %>
+      </td>
     </tr>
   </tbody>
 </table>

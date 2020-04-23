@@ -14,7 +14,9 @@
     </tr>
     <tr>
       <th scope="row">Publisher</th>
-      <td><%= @game.publisher.name %></td>
+      <td>
+        <%= link_to @game.publisher.name, publisher_path(@game.publisher) %>
+      </td>
     </tr>
     <tr>
       <th scope="row">Genre</th>

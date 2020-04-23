@@ -2,7 +2,7 @@
 
 <p>
   <% @publishers.each do |publisher| %>
-    <%= publisher.name %><br />
+    <%= link_to publisher.name, publisher_path(publisher) %><br />
   <% end %>
 </p>
 

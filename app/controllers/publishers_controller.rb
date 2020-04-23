@@ -1,6 +1,12 @@
 class PublishersController < ApplicationController
   def index
-    @publishers = Publisher.select(:name).order(:name).all
+    @publishers = Publisher.select(:id, :name).order(:name).all
+  end
+
+  def show
+    @publisher = Publisher.find(params[:id])
+    @games = Game.where(publisher: @publisher)
+                 .order(release_date: :desc, title: :asc).all
   end
 
   def new
