@@ -8,9 +8,9 @@
 
 <%= tag.div (('N/A' unless @game.score) || @game.score), class: "score #{@score_color}" %>
 
-<% if @game.badges.length > 0 %>
+<% if @badges.length > 0 %>
   <p class="badges">
-    <% @game.badges.each do |badge| %>
+    <% @badges.each do |badge| %>
     <%= badge.symbol %> <%= link_to badge.name, badge_path(badge) %><br />
     <% end %>
   </p>

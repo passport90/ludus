@@ -22,6 +22,9 @@ class GamesController < ApplicationController
     else
       'green'
     end
+
+    @badges = @game.badges.select(:id, :name, :symbol)
+                          .order(award_date: :desc, name: :asc).all
   end
 
   def new

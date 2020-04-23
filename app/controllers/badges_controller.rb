@@ -1,6 +1,7 @@
 class BadgesController < ApplicationController
   def index
-    @badges = Badge.select(:id, :name, :symbol).order(:award_date, :name).all
+    @badges = Badge.select(:id, :name, :symbol)
+                   .order(award_date: :desc, name: :asc).all
   end
 
   def show

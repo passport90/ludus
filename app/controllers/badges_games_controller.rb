@@ -2,8 +2,8 @@ class BadgesGamesController < ApplicationController
   def new
     game_id = params.require(:game).permit(:id)[:id]
     @game = Game.select(:id, :title, :platform_id).find(game_id)
-    @badges = Badge.select(:id, :name, :award_date).order(:award_date, :name)
-                   .all
+    @badges = Badge.select(:id, :name)
+                   .order(award_date: :desc, name: :asc).all
   end
 
   def create

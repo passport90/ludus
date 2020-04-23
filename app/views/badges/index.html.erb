@@ -2,7 +2,8 @@
 
 <p>
   <% @badges.each do |badge| %>
-    <%= link_to "#{badge.symbol} #{badge.name}", badge_path(badge) %><br />
+    <%= badge.symbol %>
+    <%= link_to badge.name, badge_path(badge) %><br />
   <% end %>
 </p>
 

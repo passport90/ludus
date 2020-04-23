@@ -1,0 +1,89 @@
+-- Finding genres --
+select genres.name, count(*)
+from games
+join genres on games.genre_id = genres.id
+where games.release_date < '1996-01-01'
+and games.score >= '75'
+group by genres.name
+order by genres.name;
+
+-- 1995 Platformer Game of the Year --
+select title, platforms.name as platform, genres.name as genre, score
+from games
+join platforms on games.platform_id = platforms.id
+join genres on games.genre_id = genres.id
+where games.release_date < '1996-01-01'
+and score >= '74'
+and genres.path <@ 'action.platformer'::ltree
+order by score desc, title, platforms.release_date
+limit 10;
+
+-- 1995 Non-platformer Action Game of the Year --
+select title, platforms.name as platform, genres.name as genre, score
+from games
+join platforms on games.platform_id = platforms.id
+join genres on games.genre_id = genres.id
+where games.release_date < '1996-01-01'
+and score >= '74'
+and genres.path <@ 'action'::ltree
+and not genres.path <@ 'action.platformer'::ltree
+order by score desc, title, platforms.release_date
+limit 10;
+
+-- 1995 Sports Game of the Year --
+select title, platforms.name as platform, genres.name as genre, score
+from games
+join platforms on games.platform_id = platforms.id
+join genres on games.genre_id = genres.id
+where games.release_date < '1996-01-01'
+and score >= '74'
+and genres.path <@ 'sports'::ltree
+order by score desc, title, platforms.release_date
+limit 10;
+
+-- 1995 Non-Action-and-Sports Game of the Year --
+select title, platforms.name as platform, genres.name as genre, score
+from games
+join platforms on games.platform_id = platforms.id
+join genres on games.genre_id = genres.id
+where games.release_date < '1996-01-01'
+and score >= '74'
+and not genres.path <@ 'action'::ltree
+and not genres.path <@ 'sports'::ltree
+order by score desc, title, platforms.release_date
+limit 10;
+
+-- 1995 Sega Saturn Game of the Year --
+select title, platforms.name as platform, score
+from games
+join platforms on games.platform_id = platforms.id
+where games.release_date < '1996-01-01'
+and score >= '74'
+and platforms.name = 'Sega Saturn'
+order by score desc, title, platforms.release_date
+limit 10;
+
+-- 1995 PlayStation Game of the Year --
+select title, platforms.name as platform, score
+from games
+join platforms on games.platform_id = platforms.id
+where games.release_date < '1996-01-01'
+and score >= '74'
+and platforms.name = 'PlayStation'
+order by score desc, title, platforms.release_date
+limit 10;
+
+-- 1995 Game of the Year --
+select title, platforms.name as platform, score
+from games
+join platforms on games.platform_id = platforms.id
+where games.release_date < '1996-01-01'
+and score >= '74'
+order by score desc, title, platforms.release_date
+limit 10;
+
+-- Eligible Genres:
+-- action.platformer
+-- action.!platformer
+-- sports
+-- !action && !sports

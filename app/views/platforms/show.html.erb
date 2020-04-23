@@ -21,6 +21,29 @@
 </table>
 
 <p>
-  <%= link_to "Back to Platforms", platforms_path %>
+  Top 10 Games
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Release Date</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @games.each do |game| %>
+      <% score_color = (('gray' unless game.score) || ('red' if game.score < 50) || ('yellow' if game.score < 75) || 'green') %>
+      <tr>
+        <td><%= link_to game.title, game_path(game), class: 'title' %></td>
+        <td><%= game.release_date.strftime('%A, %-d %B %Y') %></td>
+        <%= tag.td ((game.score if game.score) || 'N/A'), class: "score #{score_color}" %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to "Back to Platforms", platforms_path %><br />
   <%= link_to "Back to Home", root_path %>
 </p>
