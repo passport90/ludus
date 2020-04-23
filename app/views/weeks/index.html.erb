@@ -3,7 +3,9 @@
   <% if @weeks.length > 0 %>
     Weeks: <br />
     <% @weeks.each do |week| %>
-      <%= link_to "Week #{week}", games_path(year: @year, week: week) %><br />
+      <%= link_to "Week #{week[:week_num]}, #{week[:week_start].strftime('%-d %B')} - #{(week[:week_start] + 6.days).strftime('%-d %B')}",
+          games_path(year: @year, week: week[:week_num]) %>
+      <br />
     <% end %>
   <% else %>
     There are no games this year.
