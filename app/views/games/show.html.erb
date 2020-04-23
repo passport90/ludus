@@ -20,7 +20,7 @@
     </tr>
     <tr>
       <th scope="row">Genre</th>
-      <td><%= @game.genre.name %></td>
+      <td><%= link_to @game.genre.name, genre_path(@game.genre) %></td>
     </tr>
     <tr>
       <th scope="row">ESRB Rating</th>

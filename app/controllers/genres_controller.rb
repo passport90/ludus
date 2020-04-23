@@ -1,6 +1,12 @@
 class GenresController < ApplicationController
   def index
-    @genres = Genre.select(:name).order(:path).all
+    @genres = Genre.select(:id, :name).order(:path).all
+  end
+
+  def show
+    @genre = Genre.find(params[:id])
+    @games = Game.where(genre: @genre)
+                 .order(release_date: :desc, title: :asc).all
   end
 
   def new

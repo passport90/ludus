@@ -1,0 +1,38 @@
+<h1>Search</h1>
+
+<p>
+  <%= form_with url: search_path, method: :get do %>
+    <%= text_field_tag(:q, params[:q]) %>
+    <%= submit_tag("Search", name: nil) %>
+  <% end %>
+</p>
+<% if params[:q] and params[:q].length >= 3 %>
+  <% if @games.length > 0 %>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Platform</th>
+          <th>Release Date</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @games.each do |game| %>
+          <% score_color = (('gray' unless game.score) || ('red' if game.score < 50) || ('yellow' if game.score < 75) || 'green') %>
+          <tr>
+            <td><%= link_to game.title, game_path(game), class: 'title' %></td>
+            <td><%= link_to game.platform.name, platform_path(game.platform) %></td>
+            <td><%= game.release_date.strftime('%A, %-d %B %Y') %></td>
+            <%= tag.td ((game.score if game.score) || 'N/A'), class: "score #{score_color}" %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>There are no game titles starting with that term.</p>
+  <% end %>
+<% end %>
+<p>
+  <%= link_to 'Back to Home', root_path %>
+</p>

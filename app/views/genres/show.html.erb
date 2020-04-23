@@ -1,4 +1,4 @@
-<h1><%= @publisher.name %></h1>
+<h1><%= @genre.name %></h1>
 <p>Games</p>
 <% if @games.length > 0 %>
   <table>
@@ -23,10 +23,10 @@
     </tbody>
   </table>
 <% else %>
-  <p>There are no games released by this publisher.</p>
+  <p>There are no games in this genre.</p>
 <% end %>
 
 <p>
-  <%= link_to "Back to Publishers", publishers_path %> <br />
+  <%= link_to "Back to Genres", genres_path %> <br />
   <%= link_to "Back to All Games", years_path %>
 </p>
