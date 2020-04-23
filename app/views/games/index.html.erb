@@ -13,20 +13,16 @@
         <th>Platform</th>
         <th>Release Date</th>
         <th>Score</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @games.each do |game| %>
         <% score_color = (('gray' unless game.score) || ('red' if game.score < 50) || ('yellow' if game.score < 75) || 'green') %>
         <tr>
-          <td><%= game.title %></td>
+          <td><%= link_to game.title, game_path(game) %></td>
           <td><%= game.platform.name %></td>
           <td><%= game.release_date.strftime('%A, %-d %B %Y') %></td>
           <%= tag.td ((game.score if game.score) || 'N/A'), class: "score #{score_color}" %>
-          <td>
-            <%= link_to 'Detail', game_path(game) %><br />
-          </td>
         </tr>
       <% end %>
     </tbody>
