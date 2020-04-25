@@ -11,7 +11,8 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.select(:id, :title, :platform_id, :release_date, :publisher_id,
-                        :genre_id, :esrb_rating_id, :score)
+                        :genre_id, :esrb_rating_id, :score, :video_link,
+                        :review)
                 .find(params[:id])
     @score_color = if @game.score == nil
       'gray'
@@ -38,11 +39,25 @@ class GamesController < ApplicationController
     redirect_to game_path(@game)
   end
 
+  def edit
+    @game = Game.find(params[:id])
+  end
+
+  def update
+    @game = Game.find(params[:id])
+
+    if @game.update(game_params)
+      redirect_to game_path(@game)
+    else
+      render 'edit'
+    end
+  end
+
 private
   def game_params
     params.require(:game)
           .permit(:title, :platform_id, :release_date, :publisher_id, :genre_id,
-                  :esrb_rating_id, :score)
+                  :esrb_rating_id, :score, :video_link, :review)
   end
 
   def to_options(models)

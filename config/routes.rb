@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :weeks, only: [:index]
   resources :years, only: [:index]
   resources :badges, only: [:index, :show, :new, :create]
-  resources :games, only: [:index, :show, :new, :create]
+  resources :games, only: [:index, :show, :new, :create, :edit, :update]
   resources :esrb_ratings, only: [:index, :new, :create]
   resources :genres, only: [:index, :show, :new, :create]
   resources :platforms, only: [:index, :show, :new, :create]

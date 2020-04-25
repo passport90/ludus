@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_071315) do
+ActiveRecord::Schema.define(version: 2020_04_25_123809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2020_04_23_071315) do
     t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "review"
+    t.string "video_link"
     t.index ["esrb_rating_id"], name: "index_games_on_esrb_rating_id"
     t.index ["genre_id"], name: "index_games_on_genre_id"
     t.index ["platform_id"], name: "index_games_on_platform_id"
