@@ -17,10 +17,6 @@ p.game_header {
   font-weight: normal;
 }
 
-p.badges {
-  margin-block-start: 0;
-}
-
 
 table {
   table-layout: auto;
@@ -71,4 +67,17 @@ td.score {
 }
 .score.green {
   background-color: #6c3;
+}
+
+p.badges {
+  margin-block-start: 0;
+}
+
+p.review {
+  width: 500px;
+}
+
+span.review-header {
+  font-weight: bold;
+  font-size: 1.2em;
 }
