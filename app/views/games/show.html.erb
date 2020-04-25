@@ -39,16 +39,16 @@
   </tbody>
 </table>
 
-<% if @game.video_link %>
-<p>
-  <%= link_to 'Gameplay Video', @game.video_link, rel: 'external', target: '_blank' %> 📺↗️
-</p>
-<% end %>
-
 <% if @game.review %>
 <p class="review">
   <span class="review-header">Review</span><br />
   <%= @game.review %>
+</p>
+<% end %>
+
+<% if @game.video_link %>
+<p>
+  <%= link_to 'Gameplay Video', @game.video_link, rel: 'external', target: '_blank' %> 🎞️↗️
 </p>
 <% end %>
 

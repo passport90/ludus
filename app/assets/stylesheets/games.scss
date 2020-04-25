@@ -75,6 +75,10 @@ p.badges {
 
 p.review {
   width: 500px;
+  padding-block-start: 10px;
+  padding-block-end: 10px;
+  border-block-start: solid 1px #ccc;
+  border-block-end: solid 1px #ccc;
 }
 
 span.review-header {
