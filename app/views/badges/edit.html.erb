@@ -1,0 +1,23 @@
+<h1>Update Badge</h1>
+
+<%= form_with model: @badge do |f| %>
+  <p>
+    <%= f.label(:name, "Name") %> <br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label(:symbol, "Symbol") %> <br />
+    <%= f.text_field :symbol %>
+  </p>
+  <p>
+    <%= f.label(:release_date, "Award Date") %> <br />
+    <%= f.date_field :award_date %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<p>
+  <%= link_to 'Back to Badge Page', badge_path(@badge) %>
+</p>
