@@ -29,6 +29,6 @@ p.home > a {
   font-size: 2em;
 }
 
-input, select {
+input, select, textarea {
   font-size: 1em;
 }
