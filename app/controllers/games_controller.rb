@@ -11,8 +11,8 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.select(:id, :title, :platform_id, :release_date, :publisher_id,
-                        :genre_id, :esrb_rating_id, :score, :video_link,
-                        :review)
+                        :genre_id, :esrb_rating_id, :score, :remarks,
+                        :video_link)
                 .find(params[:id])
     @score_color = if @game.score == nil
       'gray'
