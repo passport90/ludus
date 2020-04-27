@@ -57,7 +57,7 @@ private
   def game_params
     params.require(:game)
           .permit(:title, :platform_id, :release_date, :publisher_id, :genre_id,
-                  :esrb_rating_id, :score, :video_link, :review)
+                  :esrb_rating_id, :score, :remarks, :video_link)
   end
 
   def to_options(models)
