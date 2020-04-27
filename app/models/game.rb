@@ -5,5 +5,5 @@ class Game < ApplicationRecord
   belongs_to :esrb_rating
   has_and_belongs_to_many :badges
 
-  nilify_blanks only: [:video_link, :review]
+  nilify_blanks only: [:remarks, :video_link]
 end
