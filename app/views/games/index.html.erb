@@ -31,7 +31,7 @@
   <p>There are no games released this week.</p>
 <% end %>
 <p>
-  <%= link_to '➕ Create New', new_game_path %>
+  ➕ <%= link_to 'Create New', new_game_path %>
 </p>
 <p>
   <%= link_to 'Prev Week', games_path(week: @prev_week.cweek, year: @prev_week.cwyear) %><br />

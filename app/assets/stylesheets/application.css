@@ -14,13 +14,13 @@
  *= require_self
  */
 p {
-  font-family: "Manrope", sans-serif;
+  font-family: "Work Sans", sans-serif;
 }
 
 h1 {
-  font-family: "Manrope", sans-serif;
-  font-size: 4em;
-  font-weight: 200;
+  font-family: "Work Sans", sans-serif;
+  font-size: 3em;
+  font-weight: 100;
 }
 
 th, td {
@@ -39,7 +39,12 @@ p.home > a {
   font-size: 2em;
 }
 
-input, select, textarea {
+input, textarea {
   font-family: "Inconsolata", monospace;
+  font-size: 1em;
+}
+
+select, option {
+  font-family: "Work Sans", monospace;
   font-size: 1em;
 }
