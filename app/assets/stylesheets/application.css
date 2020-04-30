@@ -13,8 +13,18 @@
  *= require_tree .
  *= require_self
  */
-* {
-  font-family: "Inconsolata"
+p {
+  font-family: "Manrope", sans-serif;
+}
+
+h1 {
+  font-family: "Manrope", sans-serif;
+  font-size: 4em;
+  font-weight: 200;
+}
+
+th, td {
+  font-family: "Inconsolata", monospace;
 }
 
 a {
@@ -30,5 +40,6 @@ p.home > a {
 }
 
 input, select, textarea {
+  font-family: "Inconsolata", monospace;
   font-size: 1em;
 }

@@ -13,11 +13,11 @@
 </p>
 
 <p>
-  <%= link_to 'Create New', new_game_path %>
+  <%= link_to '➕ Create New', new_game_path %>
 </p>
 <p>
   <%= link_to 'Prev Year', weeks_path(year: @year - 1) %><br />
   <%= link_to 'Next Year', weeks_path(year: @year + 1) %><br />
-  <%= link_to 'Back to Years', years_path %><br />
-  <%= link_to 'Back to Home', root_path %>
+  <%= link_to 'Years', years_path %><br />
+  <%= link_to 'Home', root_path %>
 </p>
