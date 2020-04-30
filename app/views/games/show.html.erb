@@ -54,7 +54,8 @@
 <p>
   <%= link_to "Back to Games This Week", games_path(week: @game.release_date.cweek, year: @game.release_date.cwyear) %> <br />
   <%= link_to "Back to All Games", years_path %><br />
-  <%= link_to "Back to Home", root_path %>
+  <%= link_to "Back to Home", root_path %><br />
+  <%= link_to "Search", search_path %>
 </p>
 
 <p>
