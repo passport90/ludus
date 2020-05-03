@@ -14,7 +14,7 @@
  *= require_self
  */
 p {
-  font-family: "Work Sans", sans-serif;
+  font-family: "Manrope", sans-serif;
 }
 
 h1 {
@@ -45,6 +45,6 @@ input, textarea {
 }
 
 select, option {
-  font-family: "Work Sans", monospace;
+  font-family: "Manrope", monospace;
   font-size: 1em;
 }
