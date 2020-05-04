@@ -1,13 +1,11 @@
 <h1>Publishers</h1>
-
+<p>
+  ➕ <%= link_to 'Create New', new_publisher_path %><br />
+</p>
 <p>
   <% @publishers.each do |publisher| %>
     <%= link_to publisher.name, publisher_path(publisher) %><br />
   <% end %>
-</p>
-
-<p>
-  ➕ <%= link_to 'Create New', new_publisher_path %><br />
 </p>
 
 <p>

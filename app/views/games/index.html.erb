@@ -1,5 +1,7 @@
 <h1>Games</h1>
-
+<p>
+  ➕ <%= link_to 'Create New', new_game_path %>
+</p>
 <p>
   <%= @week_start.strftime('Week %V, %G') %><br />
   <%= @week_start.strftime('%-d %B %Y') %> - <%= (@week_start + 6.days).strftime('%-d %B %Y') %>
@@ -30,9 +32,6 @@
 <% else %>
   <p>There are no games released this week.</p>
 <% end %>
-<p>
-  ➕ <%= link_to 'Create New', new_game_path %>
-</p>
 <p>
   <%= link_to 'Prev Week', games_path(week: @prev_week.cweek, year: @prev_week.cwyear) %><br />
   <%= link_to 'Next Week', games_path(week: @next_week.cweek, year: @next_week.cwyear) %><br />

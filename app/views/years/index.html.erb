@@ -1,4 +1,8 @@
 <h1>Games</h1>
+
+<p>
+  ➕ <%= link_to 'Create New', new_game_path %>
+</p>
 <p>
   <% if @years.length > 0 %>
     Years: <br />
@@ -8,10 +12,6 @@
   <% else %>
     There are no games.
   <% end %>
-</p>
-
-<p>
-  ➕ <%= link_to 'Create New', new_game_path %>
 </p>
 <p>
   <%= link_to 'Home', root_path %>

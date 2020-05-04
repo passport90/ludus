@@ -14,11 +14,11 @@
  *= require_self
  */
 p {
-  font-family: "SF Pro Display", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 h1 {
-  font-family: "SF Pro Display", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 3.5em;
   font-weight: 100;
 }
@@ -39,8 +39,7 @@ th {
 th, td {
   padding: 0.8em;
   border: 1px solid;
-  font-family: "SF Mono", monospace;
-  font-size: 0.9em;
+  font-family: "Inconsolata", monospace;
 }
 
 a {
@@ -56,12 +55,12 @@ p.home > a {
 }
 
 input, textarea {
-  font-family: "SF Mono", monospace;
+  font-family: "Inconsolata", monospace;
   font-size: 1em;
 }
 
 select, option {
-  font-family: "SF Pro Display", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 1em;
 }
 

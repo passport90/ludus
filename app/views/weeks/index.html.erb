@@ -1,19 +1,30 @@
 <h1><%= @year %> Games</h1>
 <p>
+  ➕ <%= link_to 'Create New', new_game_path %>
+</p>
+<p>
   <% if @weeks.length > 0 %>
-    Weeks: <br />
-    <% @weeks.each do |week| %>
-      <%= link_to "Week #{week[:week_num]}, #{week[:week_start].strftime('%-d %B')} - #{(week[:week_start] + 6.days).strftime('%-d %B')}",
-          games_path(year: @year, week: week[:week_num]) %>
-      <br />
-    <% end %>
+    <table>
+      <thead>
+        <tr>
+          <th>Week</th>
+          <th>Start</th>
+          <th>End</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @weeks.each do |week| %>
+          <tr>
+            <td><%= link_to "Week #{week[:week_num]}", games_path(year: @year, week: week[:week_num]) %></td>
+            <td><%= week[:week_start].strftime('%-d %B') %></td>
+            <td><%= (week[:week_start] + 6.days).strftime('%-d %B') %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   <% else %>
     There are no games this year.
   <% end %>
-</p>
-
-<p>
-  ➕ <%= link_to 'Create New', new_game_path %>
 </p>
 <p>
   <%= link_to 'Prev Year', weeks_path(year: @year - 1) %><br />

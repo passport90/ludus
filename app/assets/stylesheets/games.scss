@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 img.game {
   display: block;
-  max-width: 300px;
+  max-width: 400px;
   // max-height: 200px;
   // width: auto;
   height: auto;
@@ -19,7 +19,6 @@ p.game_header {
   font-weight: normal;
 }
 
-
 div.score {
   margin-block-end: 10px;
   text-align: center;
@@ -30,7 +29,8 @@ div.score {
   line-height: 2em;
   vertical-align: middle;
   border-radius: 10px;
-  font-family: "SF Pro Display", sans-serif;
+  font-weight: bold;
+  font-family: "Helvetica Neue", sans-serif;
 }
 td.score {
   text-align: center;
@@ -58,7 +58,7 @@ p.badges {
 }
 
 p.remarks {
-  font-family: "SF Pro Text", sans-serif;
+  font-family: "Avenir Book", sans-serif;
   width: 500px;
   padding-block-start: 10px;
   padding-block-end: 10px;
