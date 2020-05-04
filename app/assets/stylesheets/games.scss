@@ -20,36 +20,17 @@ p.game_header {
 }
 
 
-table {
-  table-layout: auto;
-  border-collapse: collapse;
-  border: 3px solid;
-}
-
-th, td {
-  padding: 10px;
-  border: 1px solid;
-}
-
-th {
-  text-align: left;
-  background-color: black;
-  font-weight: bold;
-  color: white;
-}
-
 div.score {
   margin-block-end: 10px;
   text-align: center;
   color: white;
-  font-weight: bold;
   font-size: 2em;
   width: 2em;
   height: 2em;
   line-height: 2em;
   vertical-align: middle;
   border-radius: 10px;
-  font-family: "Inconsolata", sans-serif;
+  font-family: "SF Pro Display", sans-serif;
 }
 td.score {
   text-align: center;
@@ -77,7 +58,7 @@ p.badges {
 }
 
 p.remarks {
-  font-family: "Quicksand", sans-serif;
+  font-family: "SF Pro Text", sans-serif;
   width: 500px;
   padding-block-start: 10px;
   padding-block-end: 10px;

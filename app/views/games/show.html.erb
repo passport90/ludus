@@ -11,12 +11,13 @@
 <% if @badges.length > 0 %>
   <p class="badges">
     <% @badges.each do |badge| %>
-    <%= badge.symbol %> <%= link_to badge.name, badge_path(badge) %><br />
+      <span class="symbol"><%= badge.symbol %></span>
+      <%= link_to badge.name, badge_path(badge) %><br />
     <% end %>
   </p>
 <% end %>
 
-<table>
+<table class="details">
   <tbody>
     <tr>
       <th scope="row">Release Date</th>
@@ -47,7 +48,8 @@
 
 <% if @game.video_link %>
 <p>
-  <%= link_to 'Gameplay Video', @game.video_link, rel: 'external', target: '_blank' %> 🎞️↗️
+  <%= link_to 'Gameplay Video', @game.video_link, rel: 'external', target: '_blank' %>
+  <span class="symbol">🎞️↗️</span>
 </p>
 <% end %>
 

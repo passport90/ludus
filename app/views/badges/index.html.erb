@@ -2,13 +2,13 @@
 
 <p>
   <% @badges.each do |badge| %>
-    <%= badge.symbol %>
+    <span class="symbol"><%= badge.symbol %></span>
     <%= link_to badge.name, badge_path(badge) %><br />
   <% end %>
 </p>
 
 <p>
-  ➕ <%= link_to 'Create New', new_badge_path %><br />
+  <span class="symbol">➕</span> <%= link_to 'Create New', new_badge_path %><br />
 </p>
 
 <p>

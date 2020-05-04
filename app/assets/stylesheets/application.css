@@ -14,17 +14,33 @@
  *= require_self
  */
 p {
-  font-family: "Manrope", sans-serif;
+  font-family: "SF Pro Display", sans-serif;
 }
 
 h1 {
-  font-family: "Work Sans", sans-serif;
-  font-size: 3em;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 3.5em;
   font-weight: 100;
 }
 
+table {
+  table-layout: auto;
+  border-collapse: collapse;
+  border: 3px solid;
+}
+
+th {
+  text-align: left;
+  background-color: black;
+  font-weight: bold;
+  color: white;
+}
+
 th, td {
-  font-family: "Inconsolata", monospace;
+  padding: 0.8em;
+  border: 1px solid;
+  font-family: "SF Mono", monospace;
+  font-size: 0.9em;
 }
 
 a {
@@ -40,11 +56,15 @@ p.home > a {
 }
 
 input, textarea {
-  font-family: "Inconsolata", monospace;
+  font-family: "SF Mono", monospace;
   font-size: 1em;
 }
 
 select, option {
-  font-family: "Manrope", monospace;
+  font-family: "SF Pro Display", sans-serif;
   font-size: 1em;
+}
+
+.symbol {
+  font-family: sans-serif;
 }
