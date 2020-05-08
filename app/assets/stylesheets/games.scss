@@ -19,6 +19,13 @@ p.game_header {
   font-size: 1.25em;
 }
 
+img.platform_logo {
+  display: inline;
+  max-height: 1em;
+  vertical-align: text-bottom;
+  // width: auto;
+}
+
 div.score {
   margin-block-end: 10px;
   text-align: center;

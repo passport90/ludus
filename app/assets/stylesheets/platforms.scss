@@ -1,6 +1,13 @@
 // Place all the styles related to the Platforms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+img.logo {
+  display: block;
+  max-width: 200px;
+  height: auto;
+}
+
 img.platform {
   display: block;
   max-width: 500px;
