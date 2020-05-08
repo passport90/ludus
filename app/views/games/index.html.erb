@@ -1,6 +1,11 @@
 <h1>Games</h1>
 <p>
-  ➕ <%= link_to 'Create New', new_game_path %>
+  ➕ <%= link_to 'Create New', new_game_path %> </br />
+  <span class="symbol">⬅️</span>
+  <%= link_to 'Prev Week', games_path(week: @prev_week.cweek, year: @prev_week.cwyear) %>
+  |
+  <%= link_to 'Next Week', games_path(week: @next_week.cweek, year: @next_week.cwyear) %>
+  <span class="symbol">➡️</span><br />
 </p>
 <p>
   <%= @week_start.strftime('Week %V, %G') %><br />
@@ -36,8 +41,6 @@
   <p>There are no games released this week.</p>
 <% end %>
 <p>
-  <%= link_to 'Prev Week', games_path(week: @prev_week.cweek, year: @prev_week.cwyear) %><br />
-  <%= link_to 'Next Week', games_path(week: @next_week.cweek, year: @next_week.cwyear) %><br />
   <%= link_to "#{@week_start.cwyear}", weeks_path(year: @week_start.cwyear) %><br />
   <%= link_to "Years", years_path %><br />
   <%= link_to "Home", root_path %><br />
