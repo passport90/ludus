@@ -21,7 +21,10 @@
   <tbody>
     <tr>
       <th scope="row">Release Date</th>
-      <td><%= @game.release_date.strftime('%A, %-d %B %Y') %></td>
+      <td>
+        <%= @game.release_date.strftime('%A, %-d %B %Y') %>
+        <%= '?' unless @game.is_date_confirmed %>
+       </td>
     </tr>
     <tr>
       <th scope="row">Publisher</th>

@@ -4,16 +4,14 @@ class GamesController < ApplicationController
     @next_week = @week_start + 1.week
     @prev_week = @week_start - 1.week
     query = Game.includes(:platform)
-                .select(:id, :title, :platform_id, :release_date, :score)
+                .select(:id, :title, :platform_id, :release_date, :score, 
+                        :is_date_confirmed)
     query = filter_by_week(query)
     @games = query.order(:release_date, :title, :platform_id).all
   end
 
   def show
-    @game = Game.select(:id, :title, :platform_id, :release_date, :publisher_id,
-                        :genre_id, :esrb_rating_id, :score, :remarks,
-                        :video_link)
-                .find(params[:id])
+    @game = Game.find(params[:id])
     @score_color = if @game.score == nil
       'gray'
     elsif @game.score < 50
@@ -57,7 +55,8 @@ private
   def game_params
     params.require(:game)
           .permit(:title, :platform_id, :release_date, :publisher_id, :genre_id,
-                  :esrb_rating_id, :score, :remarks, :video_link)
+                  :esrb_rating_id, :score, :remarks, :video_link,
+                  :is_date_confirmed)
   end
 
   def to_options(models)

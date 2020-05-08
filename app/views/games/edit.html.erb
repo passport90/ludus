@@ -14,6 +14,10 @@
     <%= f.date_field :release_date %>
   </p>
   <p>
+    <%= f.check_box :is_date_confirmed %>
+    <%= f.label(:is_date_confirmed, "Release Date Confirmed") %>
+  </p>
+  <p>
     <%= f.label(:publisher_id, "Publisher") %> <br />
     <%= f.collection_select(:publisher_id, Publisher.select(:id, :name).order(:name).all, :id, :name) %>
   </p>
