@@ -17,7 +17,10 @@
         <tr>
           <td><%= link_to game.title, game_path(game), class: 'title' %></td>
           <td><%= link_to game.platform.name, platform_path(game.platform) %></td>
-          <td><%= game.release_date.strftime('%A, %-d %B %Y') %></td>
+          <td>
+            <%= game.release_date.strftime('%A, %-d %B %Y') %>
+            <%= '?' unless game.is_date_confirmed %>
+          </td>
           <%= tag.td ((game.score if game.score) || 'N/A'), class: "score #{score_color}" %>
         </tr>
       <% end %>
