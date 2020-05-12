@@ -1,6 +1,13 @@
 class BadgesController < ApplicationController
   def index
+    @years = Badge.order(year: :desc).distinct
+                  .pluck("extract(year from award_date) as year")
+                  .map(&:to_i)
+    @year = params.fetch(:year, @years.first).to_i
+    year_start = Date.new(@year, 1, 1)
     @badges = Badge.select(:id, :name, :symbol)
+                   .where('award_date >= ?', year_start)
+                   .where('award_date < ?', year_start + 1.year)
                    .order(award_date: :desc, name: :asc).all
   end
 

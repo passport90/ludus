@@ -4,13 +4,23 @@
   <span class="symbol">➕</span> <%= link_to 'Create New', new_badge_path %><br />
 </p>
 
+<p><%= @year %> Badges</p> 
 <p>
   <% @badges.each do |badge| %>
     <span class="symbol"><%= badge.symbol %></span>
     <%= link_to badge.name, badge_path(badge) %><br />
   <% end %>
 </p>
-
+<p>
+  <% @years.each do |y| %>
+    <% if y == @year %>
+      <b><%= y %></b>
+    <% else %>
+      <%= link_to y, badges_path(year: y) %>
+    <% end %>
+    <%= '|' unless y == @years.last %> 
+  <% end %>
+</p>
 
 <p>
   <%= link_to 'Home', root_path %>
