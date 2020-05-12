@@ -3,6 +3,7 @@ class BadgesGamesController < ApplicationController
     game_id = params.require(:game).permit(:id)[:id]
     @game = Game.select(:id, :title, :platform_id).find(game_id)
     @badges = Badge.select(:id, :name)
+                   .where(is_complete: false)
                    .order(award_date: :desc, name: :asc).all
   end
 

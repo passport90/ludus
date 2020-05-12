@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_081750) do
+ActiveRecord::Schema.define(version: 2020_05_12_063637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_081750) do
     t.date "award_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_complete", default: false, null: false
     t.index ["award_date", "name"], name: "index_badges_on_award_date_and_name"
   end
 

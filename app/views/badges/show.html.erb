@@ -1,7 +1,11 @@
 <h1><%= @badge.name %></h1>
 <h2 class="symbol"><%= @badge.symbol %></h2>
 <p>Awarded on <%= @badge.award_date.strftime('%A, %-d %B %Y') %>.</p>
-<p>Games</p>
+<% if @badge.is_complete %>
+  <p>Recipients</p>
+<% else %>
+  <p>Recipients (incomplete)</p>
+<% end %>
 <% if @games.length > 0 %>
   <table>
     <thead>

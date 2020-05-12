@@ -14,6 +14,10 @@
     <%= f.date_field :award_date %>
   </p>
   <p>
+    <%= f.check_box :is_complete %>
+    <%= f.label(:is_complete, "Complete") %>
+  </p>
+  <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>

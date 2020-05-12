@@ -1,19 +1,22 @@
 <h1>Award Badge</h1>
 
-<%= form_with url: badges_games_path do %>
-  <p>
-    <%= label_tag 'badge_game[game_id]', "For #{@game.title} (#{@game.platform.name})" %> <br />
-    <%= hidden_field_tag 'badge_game[game_id]', @game.id %>
-  </p>
-  <p>
-    <%= label_tag('badge_game[badge_id]', "Badge") %> <br />
-    <%= collection_select(:badge_game, :badge_id, @badges, :id, :name) %>
-  </p>
-  <p>
-    <%= submit_tag "Award" %>
-  </p>
+<% if @badges.size > 0 %>
+  <%= form_with url: badges_games_path do %>
+    <p>
+      <%= label_tag 'badge_game[game_id]', "For #{@game.title} (#{@game.platform.name})" %> <br />
+      <%= hidden_field_tag 'badge_game[game_id]', @game.id %>
+    </p>
+    <p>
+      <%= label_tag('badge_game[badge_id]', "Badge") %> <br />
+      <%= collection_select(:badge_game, :badge_id, @badges, :id, :name) %>
+    </p>
+    <p>
+      <%= submit_tag "Award" %>
+    </p>
+  <% end %>
+<% else %>
+  <p>There are no open badges to be awarded.</p>
 <% end %>
-
 <p>
   <%= link_to 'Game', game_path(@game) %>
 </p>

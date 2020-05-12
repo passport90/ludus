@@ -41,6 +41,6 @@ class BadgesController < ApplicationController
 
 private
   def badge_params
-    params.require(:badge).permit(:name, :symbol, :award_date)
+    params.require(:badge).permit(:name, :symbol, :award_date, :is_complete)
   end
 end
