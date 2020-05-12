@@ -1,5 +1,9 @@
 <h1><%= @publisher.name %></h1>
-<p>Games</p>
+<% if @page_count > 1 %>
+  <p>Games (page <%= @page + 1 %>)</p>
+<% else %>
+  <p>Games</p>
+<% end %>
 <% if @games.length > 0 %>
   <table>
     <thead>
@@ -28,7 +32,19 @@
 <% else %>
   <p>There are no games released by this publisher.</p>
 <% end %>
-
+<% if @page_count > 1 %>
+  <p>
+    There are <%= @page_count %> pages of this list.<br />
+    <% @page_count.times do |p| %>
+      <% if p == @page %>
+        <b><%= p + 1 %></b>
+      <% else %>
+        <%= link_to p + 1, publisher_path(@publisher, page: p) %>
+      <% end %>
+      <%= '|' if p < @page_count - 1 %> 
+    <% end %>
+  </p>
+<% end %>
 <p>
   <%= link_to "Publishers", publishers_path %> <br />
   <%= link_to "Home", root_path %>

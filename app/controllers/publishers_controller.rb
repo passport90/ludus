@@ -5,7 +5,12 @@ class PublishersController < ApplicationController
 
   def show
     @publisher = Publisher.find(params[:id])
-    @games = @publisher.games.order(release_date: :desc, title: :asc).all
+    @page = params.fetch(:page, 0).to_i
+    @page_count = (@publisher.games.count / 10).ceil
+    @games = @publisher.games.includes(:platform)
+                       .order(release_date: :desc, title: :asc)
+                       .offset(@page * 10).limit(10)
+                       .all
   end
 
   def new

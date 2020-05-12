@@ -6,7 +6,8 @@ class BadgesController < ApplicationController
 
   def show
     @badge = Badge.find(params[:id])
-    @games = @badge.games.order(release_date: :desc, title: :asc).all
+    @games = @badge.games.includes(:platform).
+                    order(release_date: :desc, title: :asc).all
   end
 
   def new
