@@ -6,7 +6,7 @@ class GenresController < ApplicationController
   def show
     @genre = Genre.find(params[:id])
     @page = params.fetch(:page, 0).to_i
-    @page_count = (@genre.games.count / 10).ceil
+    @page_count = (@genre.games.count.to_f / 10).ceil
     @games = @genre.games.includes(:platform)
                    .order(release_date: :desc, title: :asc)
                    .offset(@page * 10).limit(10)
