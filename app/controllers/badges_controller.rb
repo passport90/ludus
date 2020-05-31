@@ -13,8 +13,12 @@ class BadgesController < ApplicationController
 
   def show
     @badge = Badge.find(params[:id])
-    @games = @badge.games.includes(:platform).
-                    order(release_date: :desc, title: :asc).all
+    @page = params.fetch(:page, 0).to_i
+    @page_count = (@badge.games.count.to_f / 10).ceil
+    @games = @badge.games.includes(:platform)
+                   .order(release_date: :desc, title: :asc)
+                   .offset(@page * 10).limit(10)
+                   .all
   end
 
   def new

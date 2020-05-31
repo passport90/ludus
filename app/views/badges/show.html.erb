@@ -34,7 +34,19 @@
 <% else %>
   <p>There are no games awarded this badge.</p>
 <% end %>
-
+<% if @page_count > 1 %>
+  <p>
+    There are <%= @page_count %> pages of this list.<br />
+    <% @page_count.times do |p| %>
+      <% if p == @page %>
+        <b><%= p + 1 %></b>
+      <% else %>
+        <%= link_to p + 1, badge_path(@badge, page: p) %>
+      <% end %>
+      <%= '|' if p < @page_count - 1 %> 
+    <% end %>
+  </p>
+<% end %>
 <p>
   <%= link_to "Badges", badges_path(year: @badge.award_date.year) %> <br />
   <%= link_to "Home", root_path %>

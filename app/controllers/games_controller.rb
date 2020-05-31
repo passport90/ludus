@@ -24,6 +24,7 @@ class GamesController < ApplicationController
 
     @badges = @game.badges.select(:id, :name, :symbol)
                           .order(award_date: :desc, name: :asc).all
+    @image_folder = @game.id / 1000
   end
 
   def new
