@@ -20,7 +20,7 @@ and genres.path <@ 'action.fighting'::ltree
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 1997 Plarformer of the Year --
+-- 1997 Platformer of the Year --
 select title, platforms.name as platform, genres.name as genre, score
 from games
 join platforms on games.platform_id = platforms.id
