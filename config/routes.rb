@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :franchises, only: [:index, :show, :new, :create]
   resources :badges_games, only: [:new, :create]
   resources :weeks, only: [:index]
   resources :years, only: [:index]

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_12_063637) do
+ActiveRecord::Schema.define(version: 2020_06_01_121259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 2020_05_12_063637) do
     t.index ["name"], name: "index_esrb_ratings_on_name"
   end
 
+  create_table "franchises", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_franchises_on_name", unique: true
+  end
+
   create_table "games", force: :cascade do |t|
     t.string "title", null: false
     t.bigint "platform_id", null: false
@@ -54,7 +61,9 @@ ActiveRecord::Schema.define(version: 2020_05_12_063637) do
     t.text "remarks"
     t.string "video_link"
     t.boolean "is_date_confirmed", default: false, null: false
+    t.bigint "franchise_id"
     t.index ["esrb_rating_id"], name: "index_games_on_esrb_rating_id"
+    t.index ["franchise_id"], name: "index_games_on_franchise_id"
     t.index ["genre_id"], name: "index_games_on_genre_id"
     t.index ["platform_id"], name: "index_games_on_platform_id"
     t.index ["publisher_id"], name: "index_games_on_publisher_id"
@@ -87,6 +96,7 @@ ActiveRecord::Schema.define(version: 2020_05_12_063637) do
   end
 
   add_foreign_key "games", "esrb_ratings"
+  add_foreign_key "games", "franchises"
   add_foreign_key "games", "genres"
   add_foreign_key "games", "platforms"
   add_foreign_key "games", "publishers"
