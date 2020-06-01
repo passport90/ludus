@@ -39,16 +39,16 @@
       <th scope="row">Genre</th>
       <td><%= link_to @game.genre.name, genre_path(@game.genre) %></td>
     </tr>
-    <tr>
-      <th scope="row">ESRB Rating</th>
-      <td><%= @game.esrb_rating.name %></td>
-    </tr>
     <% if @game.franchise %>
       <tr>
         <th scope="row">Franchise</th>
         <td><%= link_to @game.franchise.name, franchise_path(@game.franchise) %></td>
       </tr>
     <% end %>
+    <tr>
+      <th scope="row">ESRB Rating</th>
+      <td><%= @game.esrb_rating.name %></td>
+    </tr>
   </tbody>
 </table>
 
