@@ -43,6 +43,12 @@
       <th scope="row">ESRB Rating</th>
       <td><%= @game.esrb_rating.name %></td>
     </tr>
+    <% if @game.franchise %>
+      <tr>
+        <th scope="row">Franchise</th>
+        <td><%= link_to @game.franchise.name, franchise_path(@game.franchise) %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 

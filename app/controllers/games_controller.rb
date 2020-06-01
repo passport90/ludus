@@ -45,7 +45,8 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
 
-    if @game.update(game_params)
+
+    if @game.update!(game_params)
       redirect_to game_path(@game)
     else
       render 'edit'
@@ -56,12 +57,8 @@ private
   def game_params
     params.require(:game)
           .permit(:title, :platform_id, :release_date, :publisher_id, :genre_id,
-                  :esrb_rating_id, :score, :remarks, :video_link,
+                  :esrb_rating_id, :franchise_id, :score, :remarks, :video_link,
                   :is_date_confirmed)
-  end
-
-  def to_options(models)
-    @models.map { |model| [model.name, model.id] }
   end
 
   def week_start
