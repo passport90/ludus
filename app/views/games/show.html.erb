@@ -52,12 +52,6 @@
   </tbody>
 </table>
 
-<% if @game.remarks %>
-<p class="remarks">
-  <%= @game.remarks %>
-</p>
-<% end %>
-
 <% if @game.video_link %>
 <p>
   <%= link_to 'Gameplay Video', @game.video_link, rel: 'external', target: '_blank' %>

@@ -6,5 +6,5 @@ class Game < ApplicationRecord
   belongs_to :franchise, optional: true
   has_and_belongs_to_many :badges
 
-  nilify_blanks only: [:remarks, :video_link]
+  nilify_blanks only: [:video_link]
 end

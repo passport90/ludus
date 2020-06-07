@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_121259) do
+ActiveRecord::Schema.define(version: 2020_06_07_225135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2020_06_01_121259) do
     t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "remarks"
     t.string "video_link"
     t.boolean "is_date_confirmed", default: false, null: false
     t.bigint "franchise_id"
