@@ -1,15 +1,12 @@
 <h1>Genres</h1>
 
 <p>
-  ➕ <%= link_to 'Create New', new_genre_path %><br />
+  <%= link_to 'Home', root_path %> <br />
+  ➕ <%= link_to 'Create New', new_genre_path %>
 </p>
 
 <p>
   <% @genres.each do |genre| %>
     <%= link_to genre.name, genre_path(genre) %><br />
   <% end %>
-</p>
-
-<p>
-  <%= link_to 'Home', root_path %>
 </p>

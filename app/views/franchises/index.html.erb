@@ -1,15 +1,12 @@
 <h1>Franchises</h1>
 
 <p>
-  ➕ <%= link_to 'Create New', new_franchise_path %><br />
+  <%= link_to 'Home', root_path %><br />
+  ➕ <%= link_to 'Create New', new_franchise_path %>
 </p>
 
 <p>
   <% @franchises.each do |franchise| %>
     <%= link_to franchise.name, franchise_path(franchise) %><br />
   <% end %>
-</p>
-
-<p>
-  <%= link_to 'Home', root_path %>
 </p>
