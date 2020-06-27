@@ -13,6 +13,7 @@
         <th>Platform</th>
         <th>Release Date</th>
         <th>Score</th>
+        <th class="symbol">🎖️</th>
       </tr>
     </thead>
     <tbody>
@@ -26,6 +27,11 @@
             <%= '?' unless game.is_date_confirmed %>
           </td>
           <%= tag.td ((game.score if game.score) || 'N/A'), class: "score #{score_color}" %>
+          <td>
+            <% game.badges.each do |badge| %>
+                <%= link_to badge.symbol, badge_path(badge), class: 'symbol', title: badge.name %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

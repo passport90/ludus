@@ -7,7 +7,7 @@ class FranchisesController < ApplicationController
     @franchise = Franchise.find(params[:id])
     @page = params.fetch(:page, 0).to_i
     @page_count = (@franchise.games.count.to_f / 10).ceil
-    @games = @franchise.games.includes(:platform)
+    @games = @franchise.games.includes(:platform, :badges)
                        .order(release_date: :desc, title: :asc)
                        .offset(@page * 10).limit(10)
                        .all

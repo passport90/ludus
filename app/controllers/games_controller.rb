@@ -3,7 +3,7 @@ class GamesController < ApplicationController
     @week_start = week_start
     @next_week = @week_start + 1.week
     @prev_week = @week_start - 1.week
-    query = Game.includes(:platform)
+    query = Game.includes(:platform, :badges)
                 .select(:id, :title, :platform_id, :release_date, :score, 
                         :is_date_confirmed)
     query = filter_by_week(query)

@@ -5,7 +5,8 @@ class PlatformsController < ApplicationController
 
   def show
     @platform = Platform.find(params[:id])
-    @games = @platform.games.where('score is not null')
+    @games = @platform.games.includes(:badges)
+                      .where('score is not null')
                       .order(score: :desc, release_date: :desc, title: :asc)
                       .limit(10).all
   end

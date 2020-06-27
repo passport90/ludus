@@ -71,3 +71,16 @@ select, option {
 .symbol {
   font-family: sans-serif;
 }
+
+th.symbol {
+  text-align: center;
+  font-size: 0.75em;
+}
+
+td a.symbol {
+  font-size: 0.75em;
+}
+
+a.symbol:hover {
+  text-decoration: none;
+}
