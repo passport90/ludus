@@ -56,18 +56,6 @@ and genres.path <@ 'action.shooter'::ltree
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 1998 Puzzle of the Year --
-select title, platforms.name as platform, genres.name as genre, score
-from games
-join platforms on games.platform_id = platforms.id
-join genres on games.genre_id = genres.id
-where games.release_date < '1999-01-01'
-and games.release_date >= '1998-01-01'
-and score >= '74'
-and genres.path <@ 'puzzle'::ltree
-order by score desc, title, platforms.release_date
-limit 10;
-
 -- 1998 Racing of the Year --
 select title, platforms.name as platform, genres.name as genre, score
 from games
@@ -140,7 +128,6 @@ and not genres.path <@ 'action_adventure'::ltree
 and not genres.path <@ 'action.fighting'::ltree
 and not genres.path <@ 'action.platformer'::ltree
 and not genres.path <@ 'action.shooter'::ltree
-and not genres.path <@ 'puzzle'::ltree
 and not genres.path <@ 'racing'::ltree
 and not genres.path <@ 'role_playing'::ltree
 and not genres.path <@ 'simulation'::ltree
