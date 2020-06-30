@@ -60,13 +60,14 @@
 <% end %>
 
 <p>
+  <%= link_to "Update", edit_game_path(@game) %><br />
+  <%= link_to "Award Badge", new_badges_game_path('game[id]': @game.id) %>
+</p>
+
+<p>
+  ➕ <%= link_to 'Create New', new_game_path %> </br />
   <%= link_to "Games This Week", games_path(week: @game.release_date.cweek, year: @game.release_date.cwyear) %> <br />
   <%= link_to "All Games", years_path %><br />
   <%= link_to "Home", root_path %><br />
   <%= link_to "Search", search_path %>
-</p>
-
-<p>
-  <%= link_to "Update", edit_game_path(@game) %><br />
-  <%= link_to "Award Badge", new_badges_game_path('game[id]': @game.id) %>
 </p>
