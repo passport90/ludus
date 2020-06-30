@@ -1,6 +1,6 @@
 <h1>Games</h1>
 <p>
-  ➕ <%= link_to 'Create New', new_game_path %> </br />
+  <span class="symbol">➕</span> <%= link_to 'Create New', new_game_path %> </br />
   <span class="symbol">⬅️</span>
   <%= link_to 'Prev Week', games_path(week: @prev_week.cweek, year: @prev_week.cwyear) %>
   |
