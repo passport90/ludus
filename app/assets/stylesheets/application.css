@@ -72,6 +72,10 @@ select, option {
   font-family: sans-serif;
 }
 
+.home .symbol {
+  font-size: 2em;
+}
+
 th.symbol {
   text-align: center;
   font-size: 0.75em;

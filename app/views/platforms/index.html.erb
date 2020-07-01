@@ -1,12 +1,10 @@
 <h1>Platforms</h1>
 <p>
-  ➕ <%= link_to 'Create New', new_platform_path %><br />
+  <span class="symbol">🏠</span> <%= link_to 'Home', root_path %><br />
+  <span class="symbol">➕</span> <%= link_to 'Create New', new_platform_path %>
 </p>
 <p>
   <% @platforms.each do |platform| %>
     <%= link_to platform.name, platform_path(platform), class: 'platform' %><br />
   <% end %>
-</p>
-<p>
-  <%= link_to 'Home', root_path %>
 </p>

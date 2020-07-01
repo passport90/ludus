@@ -1,5 +1,7 @@
 <h1><%= @year %> Games</h1>
 <p>
+  <span class="symbol">🏠</span> <%= link_to 'Home', root_path %><br />
+  <span class="symbol">🗓️</span> <%= link_to 'All Years', years_path %><br />
   <span class="symbol">➕</span> <%= link_to 'Create New', new_game_path %>
 </p>
 <p>
@@ -25,10 +27,4 @@
   <% else %>
     There are no games this year.
   <% end %>
-</p>
-<p>
-  <%= link_to 'Prev Year', weeks_path(year: @year - 1) %><br />
-  <%= link_to 'Next Year', weeks_path(year: @year + 1) %><br />
-  <%= link_to 'Years', years_path %><br />
-  <%= link_to 'Home', root_path %>
 </p>

@@ -1,7 +1,8 @@
 <h1>Badges</h1>
 
 <p>
-  <span class="symbol">➕</span> <%= link_to 'Create New', new_badge_path %><br />
+  <span class="symbol">🏠</span> <%= link_to 'Home', root_path %><br />
+  <span class="symbol">➕</span> <%= link_to 'Create New', new_badge_path %>
 </p>
 
 <p><%= @year %> Badges</p> 
@@ -20,8 +21,4 @@
     <% end %>
     <%= '|' unless y == @years.last %> 
   <% end %>
-</p>
-
-<p>
-  <%= link_to 'Home', root_path %>
 </p>

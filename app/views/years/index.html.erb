@@ -1,6 +1,7 @@
 <h1>Games</h1>
 
 <p>
+  <span class="symbol">🏠</span> <%= link_to 'Home', root_path %> <br />
   <span class="symbol">➕</span> <%= link_to 'Create New', new_game_path %>
 </p>
 <p>
@@ -12,7 +13,4 @@
   <% else %>
     There are no games.
   <% end %>
-</p>
-<p>
-  <%= link_to 'Home', root_path %>
 </p>
