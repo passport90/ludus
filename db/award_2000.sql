@@ -54,73 +54,73 @@ and genres.path <@ 'action.shooter'::ltree
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 1999 Racing of the Year --
+-- 2000 Racing of the Year --
 select title, platforms.name as platform, genres.name as genre, score
 from games
 join platforms on games.platform_id = platforms.id
 join genres on games.genre_id = genres.id
-where games.release_date < '2000-01-01'
-and games.release_date >= '1999-01-01'
+where games.release_date >= '2000-01-01'
+and games.release_date < '2001-01-01'
 and score >= '74'
 and genres.path <@ 'racing'::ltree
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 1999 RPG of the Year --
+-- 2000 RPG of the Year --
 select title, platforms.name as platform, genres.name as genre, score
 from games
 join platforms on games.platform_id = platforms.id
 join genres on games.genre_id = genres.id
-where games.release_date < '2000-01-01'
-and games.release_date >= '1999-01-01'
+where games.release_date >= '2000-01-01'
+and games.release_date < '2001-01-01'
 and score >= '74'
 and genres.path <@ 'role_playing'::ltree
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 1999 Simulation Game of the Year --
+-- 2000 Simulation Game of the Year --
 select title, platforms.name as platform, genres.name as genre, score
 from games
 join platforms on games.platform_id = platforms.id
 join genres on games.genre_id = genres.id
-where games.release_date < '2000-01-01'
-and games.release_date >= '1999-01-01'
+where games.release_date >= '2000-01-01'
+and games.release_date < '2001-01-01'
 and score >= '74'
 and genres.path <@ 'simulation'::ltree
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 1999 Sports Game of the Year --
+-- 2000 Sports Game of the Year --
 select title, platforms.name as platform, genres.name as genre, score
 from games
 join platforms on games.platform_id = platforms.id
 join genres on games.genre_id = genres.id
-where games.release_date < '2000-01-01'
-and games.release_date >= '1999-01-01'
+where games.release_date >= '2000-01-01'
+and games.release_date < '2001-01-01'
 and score >= '74'
 and genres.path <@ 'sports'::ltree
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 1999 Strategy Game of the Year --
+-- 2000 Strategy Game of the Year --
 select title, platforms.name as platform, genres.name as genre, score
 from games
 join platforms on games.platform_id = platforms.id
 join genres on games.genre_id = genres.id
-where games.release_date < '2000-01-01'
-and games.release_date >= '1999-01-01'
+where games.release_date >= '2000-01-01'
+and games.release_date < '2001-01-01'
 and score >= '74'
 and genres.path <@ 'strategy'::ltree
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 1999 Miscellaneous Game of the Year --
+-- 2000 Miscellaneous Game of the Year --
 select title, platforms.name as platform, genres.name as genre, score
 from games
 join platforms on games.platform_id = platforms.id
 join genres on games.genre_id = genres.id
-where games.release_date < '2000-01-01'
-and games.release_date >= '1999-01-01'
+where games.release_date >= '2000-01-01'
+and games.release_date < '2001-01-01'
 and score >= '74'
 and not genres.path <@ 'action_adventure'::ltree
 and not genres.path <@ 'action.fighting'::ltree
@@ -134,45 +134,56 @@ and not genres.path <@ 'strategy'::ltree
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 1999 PlayStation Game of the Year --
+-- 2000 PlayStation Game of the Year --
 select title, platforms.name as platform, score
 from games
 join platforms on games.platform_id = platforms.id
-where games.release_date < '2000-01-01'
-and games.release_date >= '1999-01-01'
+where games.release_date >= '2000-01-01'
+and games.release_date < '2001-01-01'
 and platforms.name = 'PlayStation'
 and score >= '74'
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 1999 Nintendo 64 Game of the Year --
+-- 2000 Nintendo 64 Game of the Year --
 select title, platforms.name as platform, score
 from games
 join platforms on games.platform_id = platforms.id
-where games.release_date < '2000-01-01'
-and games.release_date >= '1999-01-01'
+where games.release_date >= '2000-01-01'
+and games.release_date < '2001-01-01'
 and platforms.name = 'Nintendo 64'
 and score >= '74'
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 1999 Dreamcast Game of the Year --
+-- 2000 Dreamcast Game of the Year --
 select title, platforms.name as platform, score
 from games
 join platforms on games.platform_id = platforms.id
-where games.release_date < '2000-01-01'
-and games.release_date >= '1999-01-01'
+where games.release_date >= '2000-01-01'
+and games.release_date < '2001-01-01'
 and platforms.name = 'Dreamcast'
 and score >= '74'
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 1999 Game of the Year --
+-- 2000 PlayStation 2 Game of the Year --
 select title, platforms.name as platform, score
 from games
 join platforms on games.platform_id = platforms.id
-where games.release_date < '2000-01-01'
-and games.release_date >= '1999-01-01'
+where games.release_date >= '2000-01-01'
+and games.release_date < '2001-01-01'
+and platforms.name = 'PlayStation 2'
+and score >= '74'
+order by score desc, title, platforms.release_date
+limit 10;
+
+-- 2000 Game of the Year --
+select title, platforms.name as platform, score
+from games
+join platforms on games.platform_id = platforms.id
+where games.release_date >= '2000-01-01'
+and games.release_date < '2001-01-01'
 and score >= '74'
 order by score desc, title, platforms.release_date
 limit 10;
