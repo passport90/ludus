@@ -60,7 +60,7 @@
 <% end %>
 
 <p>
-  <span class="symbol">✏️</span> ️<%= link_to "Update", edit_game_path(@game) %><br />
+  <span class="symbol">✏️</span> ️<%= link_to "Edit", edit_game_path(@game) %><br />
   <span class="symbol">🎖️</span> <%= link_to "Award Badge", new_badges_game_path('game[id]': @game.id) %>
 </p>
 

@@ -54,7 +54,7 @@ a:hover {
   text-decoration: underline;
 }
 
-p.home > a {
+p.home {
   font-size: 2em;
 }
 
@@ -70,10 +70,6 @@ select, option {
 
 .symbol {
   font-family: sans-serif;
-}
-
-.home .symbol {
-  font-size: 2em;
 }
 
 th.symbol {

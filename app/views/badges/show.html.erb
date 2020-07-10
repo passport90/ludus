@@ -48,9 +48,9 @@
   </p>
 <% end %>
 <p>
-  <span class="symbol">✏️</span> <%= link_to "Update", edit_badge_path(@badge) %><br />
+  <span class="symbol">✏️</span> <%= link_to "Edit", edit_badge_path(@badge) %><br />
 </p>
 <p>
-  <span class="symbol">🎖️</span> <%= link_to "Badges", badges_path(year: @badge.award_date.year) %> <br />
+  <span class="symbol">🎖</span> <%= link_to "Badges", badges_path(year: @badge.award_date.year) %> <br />
   <span class="symbol">🏠</span> <%= link_to 'Home', root_path %>
 </p>
