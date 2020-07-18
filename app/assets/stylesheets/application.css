@@ -13,9 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  white-space: nowrap; 
+}
+
 p {
   font-family: "Helvetica Neue", sans-serif;
 }
+
 
 h1 {
   font-family: "Helvetica Neue", sans-serif;
