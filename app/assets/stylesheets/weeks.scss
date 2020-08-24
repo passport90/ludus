@@ -1,3 +1,18 @@
 // Place all the styles related to the weeks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.week-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    width: 80%;
+    height: 40em;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.week-list__el {
+    margin: 0.5em 0;
+}

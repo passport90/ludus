@@ -1,12 +1,84 @@
-<h1>Ludus Game Compendium</h1>
+<h1 class="home-name">Ludus</h1>
 
-<p class="home">
-  <span class="symbol">💿</span> <%= link_to "Games", years_path %><br />
-  <span class="symbol">🎮</span> <%= link_to "Platforms", platforms_path %><br />
-  <span class="symbol">🏢</span> <%= link_to "Publishers", publishers_path %><br />
-  <span class="symbol">🔣</span> <%= link_to "Genres", genres_path %><br />
-  <span class="symbol">🔢</span> <%= link_to "Franchises", franchises_path %><br />
-  <span class="symbol">🎖️</span> <%= link_to "Badges", badges_path %><br />
-  <span class="symbol">🔞</span> <%= link_to "ESRB Ratings", esrb_ratings_path %><br />
-  <span class="symbol">🔎</span> <%= link_to "Search", search_path %>
-</p>
+<div class="home-nav-wrapper">
+  <div class="home-nav">
+    <%= 
+      link_to(
+        '💿', years_path, class: 'home-nav__icon symbol block-link'
+      )
+    %>
+    <div class="home-nav__text">
+      <%= link_to "Games", years_path %>
+    </div>
+  </div>
+  <div class="home-nav">
+    <%= 
+      link_to(
+        '🎮', platforms_path, class: 'home-nav__icon symbol block-link'
+      )
+    %>
+    <div class="home-nav__text">
+      <%= link_to "Platforms", platforms_path %>
+    </div>
+  </div>
+  <div class="home-nav">
+    <%= 
+      link_to(
+        '🏢', publishers_path, class: 'home-nav__icon symbol block-link'
+      )
+    %>
+    <div class="home-nav__text">
+      <%= link_to "Publishers", publishers_path %>
+    </div>
+  </div>
+  <div class="home-nav">
+    <%= 
+      link_to(
+        '🔣', genres_path, class: 'home-nav__icon symbol block-link'
+      )
+    %>
+    <div class="home-nav__text">
+      <%= link_to "Genres", genres_path %>
+    </div>
+  </div>
+  <div class="home-nav">
+    <%= 
+      link_to(
+        '🔢', franchises_path, class: 'home-nav__icon symbol block-link'
+      )
+    %>
+    <div class="home-nav__text">
+      <%= link_to "Franchises", franchises_path %>
+    </div>
+  </div>
+  <div class="home-nav">
+    <%= 
+      link_to(
+        '🎖️', badges_path, class: 'home-nav__icon symbol block-link'
+      )
+    %>
+    <div class="home-nav__text">
+      <%= link_to "Badges", badges_path %>
+    </div>
+  </div>
+  <div class="home-nav">
+    <%= 
+      link_to(
+        '🔞', esrb_ratings_path, class: 'home-nav__icon symbol block-link'
+      )
+    %>
+    <div class="home-nav__text">
+      <%= link_to "ESRB Ratings", esrb_ratings_path %>
+    </div>
+  </div>
+  <div class="home-nav">
+    <%= 
+      link_to(
+        '🔎', search_path, class: 'home-nav__icon symbol block-link'
+      )
+    %>
+    <div class="home-nav__text">
+      <%= link_to "Search", search_path %>
+    </div>
+  </div>
+</div>

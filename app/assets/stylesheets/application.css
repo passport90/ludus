@@ -15,18 +15,26 @@
  */
 
 * {
-  white-space: nowrap; 
+  box-sizing: border-box;
+  font-family: "Futura", sans-serif;
 }
 
 p {
   font-family: "Helvetica Neue", sans-serif;
 }
 
+body {
+    margin: 0
+}
+
 
 h1 {
-  font-family: "Helvetica Neue", sans-serif;
-  font-size: 3.5em;
-  font-weight: 100;
+  font-family: "Futura", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5ch;
+  text-align: center;
+  font-size: 4em;
+  font-weight: normal;
 }
 
 table {
@@ -60,8 +68,9 @@ a:hover {
   text-decoration: underline;
 }
 
-p.home {
-  font-size: 2em;
+a.block-link {
+    display: block;
+    text-decoration: none;
 }
 
 input, textarea {
@@ -89,4 +98,115 @@ td a.symbol {
 
 a.symbol:hover {
   text-decoration: none;
+}
+
+a.create-button {
+    display: block;
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    width: 2em;
+    height: 2em;
+    border-radius: 2em;
+    background-color: #2C365E;
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    line-height: 1.95em;
+    box-shadow: 2px 2px 5px 0 gray;
+}
+
+a.create-button:hover {
+    text-decoration: none;
+    background-color: #3D476F;
+}
+
+
+/* Home */
+h1.home-name {
+    font-family: "Futura", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5ch;
+    font-size: 6em;
+    text-align: center;
+}
+
+.home-nav-wrapper {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    margin: 0 10%;
+    flex-wrap: wrap;
+}
+
+.home-nav {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    margin: 1.5em 7.5%;
+}
+
+.home-nav__icon {
+    font-size: 6em;
+    text-align: center;
+}
+
+.home-nav__text {
+    font-family: "Futura";
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Menu */
+.menu-wrapper {
+    font-family: "Futura", sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    height: 4em;
+    width: 100%;
+    border-bottom: solid 1px #2C365E;
+    margin-bottom: 1em;
+}
+
+.menu-name {
+    width: 25%;
+    text-align: center;
+}
+
+.menu-name > a {
+    letter-spacing: 0.2ch;
+    text-transform: uppercase;
+    font-size: 2em;
+    color: black;
+    line-height: 2em;
+}
+
+.menu-name > a:hover {
+    text-decoration: none;
+}
+
+.menu-nav {
+    width: 7.375%;
+    margin: 0 1%;
+}
+
+.menu-nav > a {
+    line-height: 4em;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    display: flex;
+    flex-direction: row;
+    height: 1.5em;
+    margin: 0 1em;
+}
+
+.breadcrumb__el {
+    margin: 0 0.5em;
+}
+
+.breadcrumb__sep {
+    font-family: "Helvetica Neue", sans-serif;
 }

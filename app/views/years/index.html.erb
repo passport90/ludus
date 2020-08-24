@@ -1,16 +1,16 @@
 <h1>Games</h1>
 
-<p>
-  <span class="symbol">🏠</span> <%= link_to 'Home', root_path %> <br />
-  <span class="symbol">➕</span> <%= link_to 'Create New', new_game_path %>
-</p>
-<p>
-  <% if @years.length > 0 %>
-    Years: <br />
+<% if @years.length > 0 %>
+  <div class="years-nav-wrapper">
     <% @years.each do |year| %>
-      <%= link_to year, weeks_path(year: year) %><br />
+      <div class="years-nav">
+        <%= link_to year, weeks_path(year: year) %>
+      </div>
     <% end %>
-  <% else %>
-    There are no games.
-  <% end %>
+  </div>
+<% else %>
+  <p>There are no games.</p>
+<% end %>
 </p>
+
+<%= link_to '+', new_game_path, class: 'create-button' %>
