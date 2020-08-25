@@ -1,24 +1,31 @@
-<h1>Badges</h1>
+<div class="breadcrumb">
+  <div class="breadcrumb__el">
+    <%= link_to 'Badges', badge_years_path %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%= @year %>
+  </div>
+</div>
 
-<p>
-  <span class="symbol">🏠</span> <%= link_to 'Home', root_path %><br />
-  <span class="symbol">➕</span> <%= link_to 'Create New', new_badge_path %>
-</p>
+<h1><%= @year %> Badges</h1>
 
-<p><%= @year %> Badges</p> 
-<p>
-  <% @badges.each do |badge| %>
-    <span class="symbol"><%= badge.symbol %></span>
-    <%= link_to badge.name, badge_path(badge) %><br />
-  <% end %>
-</p>
-<p>
-  <% @years.each do |y| %>
-    <% if y == @year %>
-      <b><%= y %></b>
-    <% else %>
-      <%= link_to y, badges_path(year: y) %>
+<% if @badges.length > 0 %>
+  <ol class="game-show-badge-list">
+    <% @badges.each do |badge| %>
+      <li class="game-show-badge-list__el">
+        <%= 
+          link_to(
+            badge.symbol, badge_path(badge),
+            class: 'icon symbol block-link'
+          )
+        %>
+        <div class="icon-text">
+          <%= link_to badge.name, badge_path(badge) %>
+        </div>
+      </li>
     <% end %>
-    <%= '|' unless y == @years.last %> 
-  <% end %>
-</p>
+  </ol>
+<% end %>
+
+<%= link_to '+', new_badge_path, class: 'create-button' %>

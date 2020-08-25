@@ -1,23 +1,31 @@
+<div class="breadcrumb">
+  <div class="breadcrumb__el">
+    <%= link_to 'Badges', badge_years_path %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    New Badge
+  </div>
+</div>
+
 <h1>New Badge</h1>
 
+<div class="form">
 <%= form_with model: @badge do |f| %>
-  <p>
-    <%= f.label(:name, "Name") %> <br />
+  <div class="form__el">
+    <%= f.label(:name, "Name") %>
     <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label(:symbol, "Symbol") %> <br />
+  </div>
+  <div class="form__el">
+    <%= f.label(:symbol, "Symbol") %>
     <%= f.text_field :symbol %>
-  </p>
-  <p>
-    <%= f.label(:release_date, "Award Date") %> <br />
+  </div>
+  <div class="form__el">
+    <%= f.label(:release_date, "Award Date") %>
     <%= f.date_field :award_date %>
-  </p>
-  <p>
+  </div>
+  <div class="form__el--submit">
     <%= f.submit "Create" %>
-  </p>
+  </div>
 <% end %>
-
-<p>
-  <span class="symbol">❌</span> <%= link_to 'Cancel', badges_path %>
-</p>
+</div>

@@ -1,0 +1,15 @@
+<h1>Badges</h1>
+
+<% if @years.length > 0 %>
+  <ol class="year-list">
+    <% @years.each do |year| %>
+      <li class="year-list__el">
+        <%= link_to year, badges_path(year: year) %>
+      </li>
+    <% end %>
+  </ol>
+<% else %>
+  <p class="empty-state">There are no badges.</p>
+<% end %>
+
+<%= link_to '+', new_badge_path, class: 'create-button' %>

@@ -1,22 +1,54 @@
+<div class="breadcrumb">
+  <div class="breadcrumb__el">
+    <%= link_to 'Games', years_path %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%=
+      link_to(@game.release_date.cwyear,
+              weeks_path(year: @game.release_date.cwyear))
+    %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%=
+      link_to(
+        "Week #{@game.release_date.cweek}, #{@game.release_date.cwyear}",
+        games_path(
+          week: @game.release_date.cweek,
+          year: @game.release_date.cwyear
+        )
+      )
+    %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%= link_to @game.title, game_path(@game) %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">Award Badge</div>
+</div>
+
 <h1>Award Badge</h1>
 
 <% if @badges.size > 0 %>
-  <%= form_with url: badges_games_path do %>
-    <p>
-      <%= label_tag 'badge_game[game_id]', "For #{@game.title} (#{@game.platform.name})" %> <br />
-      <%= hidden_field_tag 'badge_game[game_id]', @game.id %>
-    </p>
-    <p>
-      <%= label_tag('badge_game[badge_id]', "Badge") %> <br />
-      <%= collection_select(:badge_game, :badge_id, @badges, :id, :name) %>
-    </p>
-    <p>
-      <%= submit_tag "Award" %>
-    </p>
-  <% end %>
+  <div class="form">
+    <%= form_with url: badges_games_path do %>
+      <div class="form__el">
+        <%= label_tag('badge_game[game_id]',
+                      "For #{@game.title} (#{@game.platform.name})")
+        %>
+        <%= hidden_field_tag 'badge_game[game_id]', @game.id %>
+      </div>
+      <pdiv class="form__el">
+        <%= label_tag('badge_game[badge_id]', "Badge") %> <br />
+        <%= collection_select(:badge_game, :badge_id, @badges, :id, :name) %>
+      </div>
+      <div class="form__el--submit">
+        <%= submit_tag "Award" %>
+      </div>
+    <% end %>
+  </div>
 <% else %>
-  <p>There are no open badges to be awarded.</p>
+  <p class="empty-state">There are no open badges to be awarded.</p>
 <% end %>
-<p>
-  <span class="symbol">❌</span> <%= link_to 'Cancel', game_path(@game) %>
-</p>

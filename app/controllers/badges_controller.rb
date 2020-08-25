@@ -1,9 +1,6 @@
 class BadgesController < ApplicationController
   def index
-    @years = Badge.order(year: :desc).distinct
-                  .pluck("extract(year from award_date) as year")
-                  .map(&:to_i)
-    @year = params.fetch(:year, @years.first).to_i
+    @year = params.fetch(:year, first_year).to_i
     year_start = Date.new(@year, 1, 1)
     @badges = Badge.select(:id, :name, :symbol)
                    .where('award_date >= ?', year_start)
@@ -13,11 +10,13 @@ class BadgesController < ApplicationController
 
   def show
     @badge = Badge.find(params[:id])
+    @game_count = @badge.games.count
+    items_per_page = 10
     @page = params.fetch(:page, 0).to_i
-    @page_count = (@badge.games.count.to_f / 10).ceil
+    @page_count = (@game_count.to_f / items_per_page).ceil
     @games = @badge.games.includes(:platform)
                    .order(release_date: :desc, title: :asc)
-                   .offset(@page * 10).limit(10)
+                   .offset(@page * items_per_page).limit(items_per_page)
                    .all
   end
 
@@ -43,7 +42,13 @@ class BadgesController < ApplicationController
     redirect_to badge_path(@badge)
   end
 
-private
+  private
+
+  def first_year
+    Badge.order(year: :desc).distinct
+         .pluck('extract(year from award_date) as year').first.to_i
+  end
+
   def badge_params
     params.require(:badge).permit(:name, :symbol, :award_date, :is_complete)
   end

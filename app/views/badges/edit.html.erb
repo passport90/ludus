@@ -1,27 +1,46 @@
+<div class="breadcrumb">
+  <div class="breadcrumb__el">
+    <%= link_to 'Badges', badge_years_path %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%=
+      link_to(@badge.award_date.year,
+              badges_path(year: @badge.award_date.year))
+    %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%= link_to @badge.name, badge_path(@badge) %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    Edit
+  </div>
+</div>
+
 <h1>Update Badge</h1>
 
-<%= form_with model: @badge do |f| %>
-  <p>
-    <%= f.label(:name, "Name") %> <br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label(:symbol, "Symbol") %> <br />
-    <%= f.text_field :symbol %>
-  </p>
-  <p>
-    <%= f.label(:release_date, "Award Date") %> <br />
-    <%= f.date_field :award_date %>
-  </p>
-  <p>
-    <%= f.check_box :is_complete %>
-    <%= f.label(:is_complete, "Complete") %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
-
-<p>
-  <span class="symbol">❌</span> <%= link_to 'Cancel', badge_path(@badge) %>
-</p>
+<div class="form">
+  <%= form_with model: @badge do |f| %>
+    <div class="form__el">
+      <%= f.label(:name, "Name") %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="form__el">
+      <%= f.label(:symbol, "Symbol") %>
+      <%= f.text_field :symbol %>
+    </div>
+    <div class="form__el">
+      <%= f.label(:release_date, "Award Date") %>
+      <%= f.date_field :award_date %>
+    </div>
+    <div class="form__el">
+      <%= f.check_box :is_complete %>
+      <%= f.label(:is_complete, "Complete") %>
+    </div>
+    <div class="form__el">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+</div>

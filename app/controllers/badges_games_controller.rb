@@ -1,7 +1,7 @@
 class BadgesGamesController < ApplicationController
   def new
     game_id = params.require(:game).permit(:id)[:id]
-    @game = Game.select(:id, :title, :platform_id).find(game_id)
+    @game = Game.select(:id, :title, :release_date, :platform_id).find(game_id)
     @badges = Badge.select(:id, :name)
                    .where(is_complete: false)
                    .order(award_date: :desc, name: :asc).all
@@ -15,7 +15,8 @@ class BadgesGamesController < ApplicationController
     redirect_to game_path(@game)
   end
 
-private
+  private
+
   def badge_game_params
     params.require(:badge_game).permit(:game_id, :badge_id)
   end
