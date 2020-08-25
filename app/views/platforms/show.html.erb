@@ -18,7 +18,7 @@
                 class: 'platform-show-photo')
   %>
   <div class="platform-show-publisher">
-    <%= link_to @platform.publisher.name, publisher_path(@platform.publisher) %>
+    <%= link_to @platform.publisher.name, publisher_path(publisher) %>
   </div>
   <div class="platform-show-date">
     <%=
@@ -45,7 +45,7 @@
 
   <% if @games.length > 0 %>
     <div class="game-index-count">
-      Top Games, page <%= @page + 1 %>
+      Top Games<%= ", page #{@page + 1}" if @page_count > 1 %>
     </div>
 
     <ul class="game-index-list">
@@ -93,21 +93,22 @@
         </li>
       <% end %>
     </ul>
-    <div class="page-list-wrapper">
-      <div class="page-list-title">Pages</div>
-      <ol class="page-list">
-        <% @page_count.times do |p| %>
-          <li class="page-list__el">
-            <% if @page != p %>
-              <%= link_to p + 1, platform_path(@platform, page: p) %>
-            <% else %>
-              <b><%= p + 1 %></b>
-            <% end %>
-          </li>
-        <% end %>
-      </ol>
-    </div>
-    
+    <% if @page_count > 1 %>
+      <div class="page-list-wrapper">
+        <div class="page-list-title">Pages</div>
+        <ol class="page-list">
+          <% @page_count.times do |p| %>
+            <li class="page-list__el">
+              <% if @page != p %>
+                <%= link_to p + 1, platform_path(@platform, page: p) %>
+              <% else %>
+                <b><%= p + 1 %></b>
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+    <% end %>
   <% else %>
     <p class="empty-state">There are no games released for this platform.</p>
   <% end %>

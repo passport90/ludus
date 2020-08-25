@@ -1,3 +1,32 @@
 // Place all the styles related to the Publishers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.publisher-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.publisher-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    height: 44em;
+}
+
+.publisher-list__el {
+    margin: 0.5em 0;
+}
+
+.publisher-show-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}

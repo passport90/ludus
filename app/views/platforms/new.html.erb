@@ -13,16 +13,19 @@
 <div class="form">
   <%= form_with model: @platform do |f| %>
     <div class="form__el">
-      <%= f.label(:name, "Name") %> <br />
+      <%= f.label(:name, "Name") %>
       <%= f.text_field :name %>
     </div>
     <div class="form__el">
-      <%= f.label(:release_date, "Release Date") %> <br />
+      <%= f.label(:release_date, "Release Date") %>
       <%= f.date_field :release_date %>
     </div>
     <div class="form__el">
-      <%= f.label(:publisher_id, "Publisher") %> <br />
-      <%= f.collection_select(:publisher_id, Publisher.select(:id, :name).order(:name).all, :id, :name) %>
+      <%= f.label(:publisher_id, "Publisher") %>
+      <%= f.collection_select(:publisher_id,
+                              Publisher.select(:id, :name).order(:name).all,
+                              :id, :name)
+      %>
     </div>
     <div class="form__el--submit">
       <%= f.submit "Create" %>

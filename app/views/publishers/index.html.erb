@@ -1,10 +1,36 @@
 <h1>Publishers</h1>
-<p>
-  <span class="symbol">🏠</span> <%= link_to 'Home', root_path %><br />
-  <span class="symbol">➕</span> <%= link_to 'Create New', new_publisher_path %>
-</p>
-<p>
-  <% @publishers.each do |publisher| %>
-    <%= link_to publisher.name, publisher_path(publisher) %><br />
-  <% end %>
-</p>
+
+<% if @publishers.length > 0 %>
+  <div class="publisher-list-wrapper">
+    <ol class="publisher-list">
+      <% @publishers.each do |publisher| %>
+        <li class="publisher-list__el">
+          <%= 
+            link_to publisher.name, publisher_path(publisher)
+          %>
+        </li>
+      <% end %>
+    </ol>
+    <% if @page_count > 1 %>
+      <div class="page-list-wrapper">
+        <div class="page-list-title">Pages</div>
+        <ol class="page-list">
+          <% @page_count.times do |p| %>
+            <li class="page-list__el">
+              <% if @page != p %>
+                <%= link_to p + 1, publishers_path(page: p) %>
+              <% else %>
+                <b><%= p + 1 %></b>
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p class="empty-state">There are no publishers.</p>
+<% end %>
+
+
+<%= link_to '+', new_publisher_path, class: 'create-button' %>

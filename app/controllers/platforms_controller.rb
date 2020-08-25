@@ -5,22 +5,20 @@ class PlatformsController < ApplicationController
 
   def show
     @platform = Platform.find(params[:id])
+    items_per_page = 10
     @page = params.fetch(:page, 0).to_i
-    @page_count = (@platform.games.where('score is not null').count.to_f / 10)
-                  .ceil
+    @page_count = (
+      @platform.games.where('score is not null').count.to_f / items_per_page
+    ).ceil
     @games = @platform.games.includes(:badges)
                       .where('score is not null')
                       .order(score: :desc, release_date: :desc, title: :asc)
-                      .offset(@page * 10).limit(10)
-                      .limit(10).all
+                      .offset(@page * items_per_page).limit(items_per_page)
+                      .limit(items_per_page).all
   end
 
   def new
     @platform = Platform.new
-  end
-
-  def edit
-    @platform = Platform.find(params[:id])
   end
 
   def create
@@ -28,6 +26,10 @@ class PlatformsController < ApplicationController
 
     @platform.save
     redirect_to platforms_path
+  end
+
+  def edit
+    @platform = Platform.find(params[:id])
   end
 
   def update

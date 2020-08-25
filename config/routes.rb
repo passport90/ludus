@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :esrb_ratings, only: %i[index new create]
   resources :genres, only: %i[index show new create]
   resources :platforms, only: %i[index show new create edit update]
-  resources :publishers, only: %i[index show new create]
+  resources :publishers, only: %i[index show new create edit update]
   get '/search', to: 'application#search', as: 'search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'application#index'

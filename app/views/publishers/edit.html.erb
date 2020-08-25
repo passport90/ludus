@@ -3,11 +3,15 @@
     <%= link_to 'Publishers', publishers_path %>
   </div>
   <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__sep">></div>
   <div class="breadcrumb__el">
-    New Publisher
+    <%= link_to @publisher.name, publisher_path(@publisher) %>
+  </div>
+  <div class="breadcrumb__el">
+    Edit
   </div>
 </div>
-<h1>New Publisher</h1>
+<h1>Update Publisher</h1>
 
 <div class="form">
   <%= form_with model: @publisher do |f| %>
@@ -16,7 +20,7 @@
       <%= f.text_field :name %>
     </div>
     <div class="form__el--submit">
-      <%= f.submit "Create" %>
+      <%= f.submit "Update" %>
     </div>
   <% end %>
 </div>
