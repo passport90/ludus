@@ -1,51 +1,105 @@
+<div class="breadcrumb">
+  <div class="breadcrumb__el">
+    <%= link_to 'Games', years_path %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%=
+      link_to(@game.release_date.cwyear,
+              weeks_path(year: @game.release_date.cwyear))
+    %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%=
+      link_to(
+        "Week #{@game.release_date.cweek}, #{@game.release_date.cwyear}",
+        games_path(
+          week: @game.release_date.cweek,
+          year: @game.release_date.cwyear
+        )
+      )
+    %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%= link_to @game.title, game_path(@game) %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">Edit</div>
+</div>
+
 <h1>Update Game</h1>
 
-<%= form_with model: @game do |f| %>
-  <p>
-    <%= f.label(:title, "Title") %> <br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label(:platform_id, "Platform") %> <br />
-    <%= f.collection_select(:platform_id, Platform.select(:id, :name).order(release_date: :desc).all, :id, :name) %>
-  </p>
-  <p>
-    <%= f.label(:publisher_id, "Publisher") %> <br />
-    <%= f.collection_select(:publisher_id, Publisher.select(:id, :name).order(:name).all, :id, :name) %>
-  </p>
-  <p>
-    <%= f.label(:genre_id, "Genre") %> <br />
-    <%= f.collection_select(:genre_id, Genre.select(:id, :name).order(:path).all, :id, :name) %>
-  </p>
-  <p>
-    <%= f.label(:esrb_rating_id, "ESRB Rating") %> <br />
-    <%= f.collection_select(:esrb_rating_id, EsrbRating.select(:id, :name).order(:name).all, :id, :name) %>
-  </p>
-  <p>
-    <%= f.label(:franchise_id, "Franchise") %> <br />
-    <%= f.collection_select(:franchise_id, Franchise.select(:id, :name).order(:name).all, :id, :name, include_blank: 'None') %>
-  </p>
-  <p>
-    <%= f.label(:release_date, "Release Date") %> <br />
-    <%= f.date_field :release_date %>
-  </p>
-  <p>
-    <%= f.check_box :is_date_confirmed %>
-    <%= f.label(:is_date_confirmed, "Release Date Confirmed") %>
-  </p>
-  <p>
-    <%= f.label(:score, "Score") %> <br />
-    <%= f.number_field(:score, in: 0..100) %>
-  </p>
-  <p>
-    <%= f.label(:video_link, "Video Link") %> <br />
-    <%= f.text_field :video_link %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
-
-<p>
-  <span class="symbol">❌</span> <%= link_to 'Cancel', game_path(@game) %>
-</p>
+<div class="form">
+  <%= form_with model: @game do |f| %>
+    <div class="form__el">
+      <%= f.label(:title, 'Title') %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="form__el">
+      <%= f.label(:platform_id, 'Platform') %>
+      <%= 
+        f.collection_select(
+          :platform_id, 
+          Platform.select(:id, :name).order(release_date: :desc).all, 
+          :id, :name
+        )
+      %>
+    </div>
+    <div class="form__el">
+      <%= f.label(:publisher_id, 'Publisher') %>
+      <%=
+        f.collection_select(
+          :publisher_id, Publisher.select(:id, :name).order(:name).all, :id,
+          :name
+        )
+      %>
+    </div>
+    <div class="form__el">
+      <%= f.label(:genre_id, 'Genre') %>
+      <%=
+        f.collection_select(
+          :genre_id, Genre.select(:id, :name).order(:path).all, :id, :name
+        )
+      %>
+    </div>
+    <div class="form__el">
+      <%= f.label(:esrb_rating_id, 'ESRB Rating') %>
+      <%=
+        f.collection_select(
+          :esrb_rating_id, EsrbRating.select(:id, :name).order(:name).all, :id,
+          :name
+        )
+      %>
+    </div>
+    <div class="form__el">
+      <%= f.label(:franchise_id, 'Franchise') %>
+      <%= 
+        f.collection_select(
+          :franchise_id, Franchise.select(:id, :name).order(:name).all, :id,
+          :name, include_blank: 'None'
+        )
+      %>
+    </div>
+    <div class="form__el">
+      <%= f.label(:release_date, 'Release Date') %>
+      <%= f.date_field :release_date %>
+    </div>
+    <div class="form__el">
+      <%= f.check_box :is_date_confirmed %>
+      <%= f.label(:is_date_confirmed, 'Release Date Confirmed') %>
+    </div>
+    <div class="form__el">
+      <%= f.label(:score, 'Score') %>
+      <%= f.number_field(:score, in: 0..100) %>
+    </div>
+    <div class="form__el">
+      <%= f.label(:video_link, 'Video Link') %>
+      <%= f.text_field :video_link %>
+    </div>
+    <div class="form__el--submit">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+</div>

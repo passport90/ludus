@@ -22,6 +22,8 @@
 
 .game-index-nav__el {
     margin: 0 0.5em;
+    font-family: "Futura", sans-serif;
+    text-transform: uppercase;
 }
 
 .game-index-list {
@@ -198,4 +200,39 @@
 }
 .score.green {
   background-color: #6c3;
+}
+
+.form {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 2em;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__el {
+    margin: 1em 0;
+}
+
+.form__el > label {
+    font-family: "Futura", sans-serif;
+    text-transform: uppercase;
+    color: #2C365E;
+}
+
+.form__el > select, .form__el > input[type="text"],
+.form__el > input[type="date"], .form__el > input[type="number"] {
+    width: 100%;
+}
+
+.form__el--submit {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.form__el--submit > input[type="submit"] {
+    font-family: "Futura", sans-serif;
+    text-transform: uppercase;
+    padding: 1em;
 }

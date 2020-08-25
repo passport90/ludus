@@ -41,10 +41,10 @@
       <span class="symbol">➡️</span>
     </div>
   </div>
-  <div class="game-index-count">
-    <%= @games.length %> Games
-  </div>
   <% if @games.length > 0 %>
+    <div class="game-index-count">
+      <%= @games.length %> Games
+    </div>
     <ul class="game-index-list">
       <% @games.each do |game| %>
         <% 
