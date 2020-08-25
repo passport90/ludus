@@ -12,7 +12,7 @@ class GenresController < ApplicationController
     @game_count = @genre.games.count
     items_per_page = 10
     @page = params.fetch(:page, 0).to_i
-    @page_count = (@genre_count.to_f / items_per_page).ceil
+    @page_count = (@game_count.to_f / items_per_page).ceil
     @games = @genre.games.includes(:platform, :badges)
                    .order(release_date: :desc, title: :asc)
                    .offset(@page * items_per_page).limit(items_per_page)
@@ -40,7 +40,7 @@ class GenresController < ApplicationController
     @genre.assign_attributes(genre_params)
     @genre.path = to_path(@genre.name)
 
-    if @genre.update!(genre_params)
+    if @genre.save!
       redirect_to genre_path(@genre)
     else
       render 'edit'

@@ -53,6 +53,9 @@
               %>
               <%= link_to game.platform.name, platform_path(game.platform) %>
             </div>
+            <div class="game-index-list__el__publisher">
+              <%= link_to game.publisher.name, publisher_path(game.publisher) %>
+            </div>
             <div class="game-index-list__el__date">
               <%= game.release_date.strftime('%A, %-d %B %Y') %>
               <%= '?' unless game.is_date_confirmed %>

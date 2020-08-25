@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :franchises, only: %i[index show new create]
+  resources :franchises, only: %i[index show new create edit update]
   resources :badges_games, only: %i[new create]
   resources :weeks, only: [:index]
   resources :years, only: [:index]

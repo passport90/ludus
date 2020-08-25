@@ -1,58 +1,104 @@
+<div class="breadcrumb">
+  <div class="breadcrumb__el">
+    <%= link_to 'Franchises', franchises_path %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%= @franchise.name %>
+  </div>
+</div>
+
 <h1><%= @franchise.name %></h1>
-<p>Franchise</p>
-<% if @page_count > 1 %>
-  <p>Games (page <%= @page + 1 %>)</p>
-<% else %>
-  <p>Games</p>
-<% end %>
-<% if @games.length > 0 %>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Platform</th>
-        <th>Release Date</th>
-        <th>Score</th>
-        <th class="symbol">🎖️</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<div class="center-wrapper">
+  <ul class="action-list">
+    <li class="action-list__el">
+      <%= 
+        link_to(
+          '️✏️️️', edit_franchise_path(@franchise),
+          class: 'icon--small symbol block-link'
+        )
+      %>
+      <div class="icon-text--small">
+        <%= link_to "Edit", edit_franchise_path(@franchise) %>
+      </div>
+    </li>
+  </ul>
+  <% if @games.length > 0 %>
+    <div class="game-index-count">
+      <%= @game_count %> Games<%= ", page #{@page + 1}" if @page_count > 1 %>
+    </div>
+    <ul class="game-index-list">
       <% @games.each do |game| %>
-        <% score_color = (('gray' unless game.score) || ('red' if game.score < 50) || ('yellow' if game.score < 75) || 'green') %>
-        <tr>
-          <td><%= link_to game.title, game_path(game), class: 'title' %></td>
-          <td><%= link_to game.platform.name, platform_path(game.platform) %></td>
-          <td>
-            <%= game.release_date.strftime('%A, %-d %B %Y') %>
-            <%= '?' unless game.is_date_confirmed %>
-          </td>
-          <%= tag.td ((game.score if game.score) || 'N/A'), class: "score #{score_color}" %>
-          <td>
-            <% game.badges.each do |badge| %>
-                <%= link_to badge.symbol, badge_path(badge), class: 'symbol', title: badge.name %>
-            <% end %>
-          </td>
-        </tr>
+        <% 
+          score_color = (
+            ('gray' unless game.score) ||
+            ('red' if game.score < 50) || 
+            ('yellow' if game.score < 75) || 
+            'green'
+          )
+          image_folder = game.id / 1000
+        %>
+        <li class="game-index-list__el">
+          <div class="game-index-list__el__image-wrapper">
+            <%= image_tag("/images/games/#{image_folder}/#{game.id}.jpg") %>
+          </div>
+          <div class="game-index-list__el__title-wrapper">
+            <div class="game-index-list__el__title">
+              <%= link_to game.title, game_path(game) %>
+            </div>
+            <div class="game-index-list__el__platform">
+              <%=
+                image_tag("/images/platform_logos/#{game.platform.id}.jpg")
+              %>
+              <%= link_to game.platform.name, platform_path(game.platform) %>
+            </div>
+            <div class="game-index-list__el__publisher">
+              <%= link_to game.publisher.name, publisher_path(game.publisher) %>
+            </div>
+            <div class="game-index-list__el__date">
+              <%= game.release_date.strftime('%A, %-d %B %Y') %>
+              <%= '?' unless game.is_date_confirmed %>
+            </div>
+            <div class="game-index-list__el__badges">
+              <% game.badges.each do |badge| %>
+                <%=
+                  link_to(
+                    badge.symbol, badge_path(badge), class: 'symbol', 
+                    title: badge.name
+                  )
+                %>
+              <% end %>
+            </div>
+          </div>
+          <div class="game-index-list__el__rating-wrapper">
+            <span class="game-index-list__el__rating score <%= score_color %>">
+              <%= ((game.score if game.score) || 'N/A') %>
+            </td>
+          </div>
+        </li>
       <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>There are no games in this franchise.</p>
-<% end %>
-<% if @page_count > 1 %>
-  <p>
-    There are <%= @page_count %> pages of this list.<br />
-    <% @page_count.times do |p| %>
-      <% if p == @page %>
-        <b><%= p + 1 %></b>
-      <% else %>
-        <%= link_to p + 1, franchise_path(@franchise, page: p) %>
-      <% end %>
-      <%= '|' if p < @page_count - 1 %> 
+    </ul>
+    <% if @page_count > 1 %>
+      <div class="page-list-wrapper">
+        <div class="page-list-title">Pages</div>
+        <ol class="page-list">
+          <% @page_count.times do |p| %>
+            <li class="page-list__el">
+              <% if @page != p %>
+                <%= link_to p + 1, franchise_path(@franchise, page: p) %>
+              <% else %>
+                <b><%= p + 1 %></b>
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
     <% end %>
-  </p>
-<% end %>
-<p>
-  <span class="symbol">🔢</span> <%= link_to "Franchises", franchises_path %> <br />
-  <span class="symbol">🏠</span> <%= link_to 'Home', root_path %>
-</p>
+
+  <% else %>
+    <p>There are no games in this franchise.</p>
+  <% end %>
+</div>
+
+<%= link_to '+', new_franchise_path, class: 'create-button' %>

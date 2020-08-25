@@ -250,11 +250,12 @@ h1.home-name {
     flex-direction: column;
     flex-wrap: wrap;
     margin: 0 auto;
-    height: 44em;
+    height: 52em;
 }
 
 .long-list__el {
-    margin: 0.5em 0;
+    margin: 1% 0;
+    width: 31%;
 }
 
 /* Action List */

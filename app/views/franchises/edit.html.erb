@@ -4,11 +4,15 @@
   </div>
   <div class="breadcrumb__sep">></div>
   <div class="breadcrumb__el">
-    New Franchise
+    <%= link_to @franchise.name, franchise_path(@franchise) %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    Edit Franchise
   </div>
 </div>
 
-<h1>New Franchise</h1>
+<h1>Update Franchise</h1>
 
 <div class="form">
   <%= form_with model: @franchise do |f| %>
@@ -17,7 +21,7 @@
       <%= f.text_field :name %>
     </div>
     <div class="form__el--submit">
-      <%= f.submit "Create" %>
+      <%= f.submit "Update" %>
     </div>
   <% end %>
 </div>
