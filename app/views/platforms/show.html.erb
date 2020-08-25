@@ -1,61 +1,102 @@
-<p>
-  <%= image_tag("/images/platform_logos/#{@platform.id}.jpg", class: 'logo') %>
-</p>
-<p>
-  <%= image_tag("/images/platforms/#{@platform.id}.jpg", class: 'platform') %>
-</p>
+<div class="breadcrumb">
+  <div class="breadcrumb__el">
+    <%= link_to 'Platforms', platforms_path %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%= @platform.name %>
+  </div>
+</div>
+
 <h1> <%= @platform.name %> </h1>
-<table>
-  <tbody>
-    <tr>
-      <th scope="row">Release Date</th>
-      <td>
-        <%= link_to @platform.release_date.strftime('%-d %B %Y'),
-                    games_path(year: @platform.release_date.cwyear, week: @platform.release_date.cweek) %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Publisher</th>
-      <td>
-        <%= link_to @platform.publisher.name, publisher_path(@platform.publisher) %>
-      </td>
-    </tr>
-  </tbody>
-</table>
 
-<p>
-  Top 10 Games
-</p>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Release Date</th>
-      <th>Score</th>
-      <th class="symbol">🎖️</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @games.each do |game| %>
-      <% score_color = (('gray' unless game.score) || ('red' if game.score < 50) || ('yellow' if game.score < 75) || 'green') %>
-      <tr>
-        <td><%= link_to game.title, game_path(game), class: 'title' %></td>
-        <td>
-          <%= game.release_date.strftime('%A, %-d %B %Y') %>
-          <%= '?' unless game.is_date_confirmed %>
-        </td>
-        <%= tag.td ((game.score if game.score) || 'N/A'), class: "score #{score_color}" %>
-        <td>
-          <% game.badges.each do |badge| %>
-              <%= link_to badge.symbol, badge_path(badge), class: 'symbol', title: badge.name %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="platform-show-wrapper">
+  <%= image_tag("/images/platform_logos/#{@platform.id}.jpg",
+                class: 'platform-show-logo')
+  %>
+  <%= image_tag("/images/platforms/#{@platform.id}.jpg",
+                class: 'platform-show-photo')
+  %>
+  <div class="platform-show-publisher">
+    <%= link_to @platform.publisher.name, publisher_path(@platform.publisher) %>
+  </div>
+  <div class="platform-show-date">
+    <%=
+      link_to(
+        @platform.release_date.strftime('%-d %B %Y'),
+        games_path(year: @platform.release_date.cwyear,
+                   week: @platform.release_date.cweek)
+      )
+    %>
+  </div>
+  <ul class="action-list">
+    <li class="action-list__el">
+      <%= 
+        link_to(
+          '️✏️️️', edit_platform_path(@platform),
+          class: 'icon--small symbol block-link'
+        )
+      %>
+      <div class="icon-text--small">
+        <%= link_to "Edit", edit_platform_path(@platform) %>
+      </div>
+    </li>
+  </ul>
 
-<p>
-  <span class="symbol">🎮</span> <%= link_to "Platforms", platforms_path %><br />
-  <span class="symbol">🏠</span> <%= link_to 'Home', root_path %>
-</p>
+  <% if @games.length > 0 %>
+    <div class="game-index-count">
+      Top <%= @games.length %> Games
+    </div>
+
+    <ul class="game-index-list">
+      <% @games.each do |game| %>
+        <% 
+          score_color = (
+            ('gray' unless game.score) ||
+            ('red' if game.score < 50) || 
+            ('yellow' if game.score < 75) || 
+            'green'
+          )
+          image_folder = game.id / 1000
+        %>
+        <li class="game-index-list__el">
+          <div class="game-index-list__el__image-wrapper">
+            <%= image_tag("/images/games/#{image_folder}/#{game.id}.jpg") %>
+          </div>
+          <div class="game-index-list__el__title-wrapper">
+            <div class="game-index-list__el__title">
+              <%= link_to game.title, game_path(game) %>
+            </div>
+            <div class="game-index-list__el__publisher">
+              <%= link_to game.publisher.name, publisher_path(game.publisher) %>
+            </div>
+            <div class="game-index-list__el__date">
+              <%= game.release_date.strftime('%A, %-d %B %Y') %>
+              <%= '?' unless game.is_date_confirmed %>
+            </div>
+            <div class="game-index-list__el__badges">
+              <% game.badges.each do |badge| %>
+                <%=
+                  link_to(
+                    badge.symbol, badge_path(badge), class: 'symbol', 
+                    title: badge.name
+                  )
+                %>
+              <% end %>
+            </div>
+          </div>
+          <div class="game-index-list__el__rating-wrapper">
+            <span class="game-index-list__el__rating score <%= score_color %>">
+              <%= ((game.score if game.score) || 'N/A') %>
+            </td>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    
+  <% else %>
+    <p class="empty-state">There are no games released for this platform.</p>
+  <% end %>
+</div>
+
+<%= link_to '+', new_platform_path, class: 'create-button' %>

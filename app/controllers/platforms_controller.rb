@@ -1,6 +1,6 @@
 class PlatformsController < ApplicationController
   def index
-    @platforms = Platform.select(:id, :name).order(:release_date).all
+    @platforms = Platform.select(:id, :name).order(release_date: :desc).all
   end
 
   def show
@@ -15,6 +15,10 @@ class PlatformsController < ApplicationController
     @platform = Platform.new
   end
 
+  def edit
+    @platform = Platform.find(params[:id])
+  end
+
   def create
     @platform = Platform.new(platform_params)
 
@@ -22,7 +26,18 @@ class PlatformsController < ApplicationController
     redirect_to platforms_path
   end
 
-private
+  def update
+    @platform = Platform.find(params[:id])
+
+    if @platform.update!(platform_params)
+      redirect_to platform_path(@platform)
+    else
+      render 'edit'
+    end
+  end
+
+  private
+
   def platform_params
     params.require(:platform).permit(:name, :release_date, :publisher_id)
   end

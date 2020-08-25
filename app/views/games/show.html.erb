@@ -101,8 +101,8 @@
     </div>
   <% end %>
 
-  <ol class="game-show-action-list">
-    <li class="game-show-action-list__el">
+  <ul class="action-list">
+    <li class="action-list__el">
       <%= 
         link_to(
           '️✏️️️', edit_game_path(@game),
@@ -113,7 +113,7 @@
         <%= link_to "Edit", edit_game_path(@game) %>
       </div>
     </li>
-    <li class="game-show-action-list__el">
+    <li class="action-list__el">
       <%= 
         link_to(
           '️🎖️', new_badges_game_path('game[id]': @game.id),
@@ -124,7 +124,7 @@
         <%= link_to "Award Badge", new_badges_game_path('game[id]': @game.id) %>
       </div>
     </li>
-  </ol>
+  </ul>
 
 </div>
 

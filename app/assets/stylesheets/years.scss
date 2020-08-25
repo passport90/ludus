@@ -2,7 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.years-nav-wrapper {
+
+.year-list {
     list-style: none;
     padding: 0;
     width: 80%;
@@ -12,12 +13,10 @@
     flex-wrap: wrap;
 }
 
-.years-nav {
-    display: block;
+.year-list__el {
     font-family: "Futura", sans-serif;
+    text-transform: uppercase;
     width: 10%;
-    display: flex;
-    flex-direction: column;
     margin: 1.5em 7.5%;
     text-align: center;
     font-size: 2.5em;

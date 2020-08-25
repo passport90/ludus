@@ -1,9 +1,9 @@
 <h1>Games</h1>
 
 <% if @years.length > 0 %>
-  <ol class="years-nav-wrapper">
+  <ol class="year-list">
     <% @years.each do |year| %>
-      <li class="years-nav">
+      <li class="year-list__el">
         <%= link_to year, weeks_path(year: year) %>
       </li>
     <% end %>
@@ -11,6 +11,5 @@
 <% else %>
   <p class="empty-state">There are no games.</p>
 <% end %>
-</p>
 
 <%= link_to '+', new_game_path, class: 'create-button' %>

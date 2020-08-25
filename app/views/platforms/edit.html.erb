@@ -4,11 +4,15 @@
   </div>
   <div class="breadcrumb__sep">></div>
   <div class="breadcrumb__el">
-    New Platform
+    <%= link_to @platform.name, platform_path(@platform) %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    Edit
   </div>
 </div>
 
-<h1>New Platform</h1>
+<h1>Update Platform</h1>
 
 <div class="form">
   <%= form_with model: @platform do |f| %>
@@ -25,7 +29,7 @@
       <%= f.collection_select(:publisher_id, Publisher.select(:id, :name).order(:name).all, :id, :name) %>
     </div>
     <div class="form__el--submit">
-      <%= f.submit "Create" %>
+      <%= f.submit "Update" %>
     </div>
   <% end %>
 </div>
