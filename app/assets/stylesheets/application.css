@@ -16,7 +16,6 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Futura", sans-serif;
 }
 
 p {
@@ -146,15 +145,32 @@ h1.home-name {
     margin: 1.5em 7.5%;
 }
 
-.home-nav__icon {
+.icon {
+    font-size: 4em;
+    text-align: center;
+}
+
+.icon--big {
     font-size: 6em;
     text-align: center;
 }
 
-.home-nav__text {
+.icon--small {
+    font-size: 2em;
+    text-align: center;
+}
+
+.icon-text {
     font-family: "Futura";
     text-transform: uppercase;
     text-align: center;
+}
+
+.icon-text--small {
+    font-family: "Futura";
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 0.75em;
 }
 
 /* Menu */
@@ -187,6 +203,7 @@ h1.home-name {
 }
 
 .menu-nav {
+    font-family: "Futura", sans-serif;
     width: 7.375%;
     margin: 0 1%;
 }
@@ -207,6 +224,7 @@ h1.home-name {
     margin: 0 0.5em;
 }
 
-.breadcrumb__sep {
-    font-family: "Helvetica Neue", sans-serif;
+/* Empty state */
+.empty-state {
+    text-align: center;
 }

@@ -1,52 +1,192 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-img.game {
-  display: block;
-  max-width: 400px;
-  // max-height: 200px;
-  // width: auto;
-  height: auto;
+/* Game Index */
+.game-index-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-h1.game_header {
-  margin-block-start: 0;
-  margin-block-end: 0;
-};
-
-p.game_header {
-  margin-block-start: 0;
-  font-size: 1.25em;
+.game-index-week {
+    font-size: 2em;
+    font-weight: bold;
 }
 
-img.platform_logo {
-  display: inline;
-  max-height: 1.5em;
-  vertical-align: -33%;
-  // width: auto;
+.game-index-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2em;
 }
 
-div.score {
-  margin-block-end: 10px;
-  text-align: center;
-  color: white;
-  font-size: 2em;
-  width: 2em;
-  height: 2em;
-  line-height: 2em;
-  vertical-align: middle;
-  border-radius: 10px;
-  font-weight: bold;
-  font-family: "Helvetica Neue", sans-serif;
+.game-index-nav__el {
+    margin: 0 0.5em;
 }
-td.score {
-  text-align: center;
-  vertical-align: middle;
-  line-height: 1em;
-  color: white;
-  font-weight: bold;
-  border: solid 1px #2C365E;
+
+.game-index-list {
+    list-style: none;
+    width: 1000px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #d3d3d3;
 }
+
+.game-index-list__el {
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid 1px #d3d3d3;
+}
+
+.game-index-list__el__image-wrapper {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-index-list__el__image-wrapper > img {
+    display: block;
+    max-height: 200px;
+    max-width: 200px;
+    border: solid 1px #d3d3d3;
+}
+
+.game-index-list__el__title-wrapper {
+    width: 700px;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.game-index-list__el__title > a {
+    font-size: 2em;
+}
+
+.game-index-list__el__platform > img {
+    height: 1em;
+}
+
+.game-index-list__el__platform > a {
+    font-size: 1.25em;
+}
+
+.game-index-list__el__badges > .symbol {
+    margin-right: 0.5em;
+}
+
+.game-index-list__el__rating-wrapper {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-index-list__el__rating {
+    color: #fff;
+    width: 4ch;
+    height: 4ch;
+    line-height: 4ch;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/* Game Show */
+.game-show-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-show-artwork {
+    display: block;
+    max-width: 500px;
+    margin-bottom: 3em;
+    border: solid 1px #d3d3d3;
+}
+
+.game-show-platform > a {
+    font-size: 2em;
+}
+.game-show-platform__logo {
+    height: 1.75em;
+}
+
+.game-show-rating-wrapper {
+    margin: 2em 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.game-show-rating {
+    margin-right: 0.5em;
+    width: 4ch;
+    height: 4ch;
+    line-height: 4ch;
+    font-weight: bold;
+    font-size: 2em;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.game-show-esrb {
+    margin-left: 0.5em;
+    height: 4em;
+    display: block;
+}
+
+.game-show-franchise {
+    margin-bottom: 2em;
+}
+
+.game-show-badge-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 2em;
+    justify-content: center;
+    width: 80%;
+}
+
+
+.game-show-badge-list__el {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding: 0 1%;
+}
+
+.game-show-video-link {
+    margin-bottom: 2em;
+}
+
+.game-show-action-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2em;
+    justify-content: center;
+}
+
+.game-show-action-list__el {
+    width: 5em;
+    margin: 0 1em;
+}
+
 .score.gray {
   background-color: #ccc;
 }
@@ -58,8 +198,4 @@ td.score {
 }
 .score.green {
   background-color: #6c3;
-}
-
-p.badges {
-  margin-block-start: 0;
 }

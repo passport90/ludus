@@ -19,7 +19,7 @@
         <%= 
           link_to(
             "Week #{week[:week_num]}, #{week[:week_start].strftime('%-d %B')}"\
-            " - #{(week[:week_start] + 6.days).strftime('%-d %B')}",
+            " － #{(week[:week_start] + 6.days).strftime('%-d %B')}",
             games_path(year: @year, week: week[:week_num])
           )
         %>
@@ -27,7 +27,7 @@
     <% end %>
   </div>
 <% else %>
-  <p>There are no games this year.</p>
+  <p class="empty-state">There are no games this year.</p>
 <% end %>
 
 

@@ -1,53 +1,104 @@
+<div class="breadcrumb">
+  <div class="breadcrumb__el">
+    <%= link_to 'Games', years_path %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%= link_to @year,  weeks_path(year: @year)%>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    Week <%= @week %>, <%= @year %>
+  </div>
+</div>
+
 <h1>Games</h1>
-<p>
-  <span class="symbol">➕</span> <%= link_to 'Create New', new_game_path %> </br />
-  <span class="symbol">⬅️</span>
-  <%= link_to 'Prev Week', games_path(week: @prev_week.cweek, year: @prev_week.cwyear) %>
-  |
-  <%= link_to 'Next Week', games_path(week: @next_week.cweek, year: @next_week.cwyear) %>
-  <span class="symbol">➡️</span><br />
-</p>
-<p>
-  <%= @week_start.strftime('Week %V, %G') %><br />
-  <%= @week_start.strftime('%-d %B %Y') %> - <%= (@week_start + 6.days).strftime('%-d %B %Y') %>
-</p>
-  <p><%= @games.length %> Games</p>
-<% if @games.length > 0 %>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Platform</th>
-        <th>Release Date</th>
-        <th>Score</th>
-        <th class="symbol">🎖️</th>
-      </tr>
-    </thead>
-    <tbody>
+<div class="game-index-wrapper">
+  <div class="game-index-week">
+    Week <%= @week %>, <%= @year %>
+  </div>
+  <div class="game-index-dates">
+    <%= @week_start.strftime('%-d %B %Y') %> －
+    <%= (@week_start + 6.days).strftime('%-d %B %Y') %>
+  </div>
+  <div class="game-index-nav">
+    <div class="game-index-nav__el">
+      <span class="symbol">⬅️</span>
+      <%= 
+        link_to(
+          'Prev Week', 
+          games_path(week: @prev_week.cweek, year: @prev_week.cwyear)
+        )
+      %>
+    </div>
+    <div class="game-index-nav__el">
+      <%= 
+        link_to(
+          'Next Week', 
+          games_path(week: @next_week.cweek, year: @next_week.cwyear)
+        )
+      %>
+      <span class="symbol">➡️</span>
+    </div>
+  </div>
+  <div class="game-index-count">
+    <%= @games.length %> Games
+  </div>
+  <% if @games.length > 0 %>
+    <ul class="game-index-list">
       <% @games.each do |game| %>
-        <% score_color = (('gray' unless game.score) || ('red' if game.score < 50) || ('yellow' if game.score < 75) || 'green') %>
-        <tr>
-          <td><%= link_to game.title, game_path(game), class: 'title' %></td>
-          <td><%= link_to game.platform.name, platform_path(game.platform) %></td>
-          <td>
-            <%= game.release_date.strftime('%A, %-d %B %Y') %>
-            <%= '?' unless game.is_date_confirmed %>
-          </td>
-          <%= tag.td ((game.score if game.score) || 'N/A'), class: "score #{score_color}" %>
-          <td>
-            <% game.badges.each do |badge| %>
-                <%= link_to badge.symbol, badge_path(badge), class: 'symbol', title: badge.name %>
-            <% end %>
-          </td>
-        </tr>
+        <% 
+          score_color = (
+            ('gray' unless game.score) ||
+            ('red' if game.score < 50) || 
+            ('yellow' if game.score < 75) || 
+            'green'
+          )
+          image_folder = game.id / 1000
+        %>
+        <li class="game-index-list__el">
+          <div class="game-index-list__el__image-wrapper">
+            <%= image_tag("/images/games/#{image_folder}/#{game.id}.jpg") %>
+          </div>
+          <div class="game-index-list__el__title-wrapper">
+            <div class="game-index-list__el__title">
+              <%= link_to game.title, game_path(game) %>
+            </div>
+            <div class="game-index-list__el__platform">
+              <%=
+                image_tag("/images/platform_logos/#{game.platform.id}.jpg")
+              %>
+              <%= link_to game.platform.name, platform_path(game.platform) %>
+            </div>
+            <div class="game-index-list__el__publisher">
+              <%= link_to game.publisher.name, publisher_path(game.publisher) %>
+            </div>
+            <div class="game-index-list__el__date">
+              <%= game.release_date.strftime('%A, %-d %B %Y') %>
+              <%= '?' unless game.is_date_confirmed %>
+            </div>
+            <div class="game-index-list__el__badges">
+              <% game.badges.each do |badge| %>
+                <%=
+                  link_to(
+                    badge.symbol, badge_path(badge), class: 'symbol', 
+                    title: badge.name
+                  )
+                %>
+              <% end %>
+            </div>
+          </div>
+          <div class="game-index-list__el__rating-wrapper">
+            <span class="game-index-list__el__rating score <%= score_color %>">
+              <%= ((game.score if game.score) || 'N/A') %>
+            </td>
+          </div>
+        </li>
       <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>There are no games released this week.</p>
-<% end %>
-<p>
-  <span class="symbol">🗓️</span> <%= link_to "This Year", weeks_path(year: @week_start.cwyear) %><br />
-  <span class="symbol">🔎</span> <%= link_to 'Search', search_path %><br />
-  <span class="symbol">🏠</span> <%= link_to 'Home', root_path %>
-</p>
+    </ul>
+  <% else %>
+    <p>There are no games released this week.</p>
+  <% end %>
+</div>
+
+<%= link_to '+', new_game_path, class: 'create-button' %>

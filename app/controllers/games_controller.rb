@@ -1,29 +1,31 @@
 class GamesController < ApplicationController
   def index
+    @year = params[:year]
+    @week = params[:week]
     @week_start = week_start
     @next_week = @week_start + 1.week
     @prev_week = @week_start - 1.week
-    query = Game.includes(:platform, :badges)
-                .select(:id, :title, :platform_id, :release_date, :score, 
-                        :is_date_confirmed)
+    query = Game.includes(:platform, :publisher, :badges)
+                .select(:id, :title, :platform_id, :release_date, :score,
+                        :is_date_confirmed, :publisher_id)
     query = filter_by_week(query)
     @games = query.order(:release_date, :title, :platform_id).all
   end
 
   def show
     @game = Game.find(params[:id])
-    @score_color = if @game.score == nil
-      'gray'
-    elsif @game.score < 50
-      'red'
-    elsif @game.score < 75
-      'yellow'
-    else
-      'green'
+    @score_color = if @game.score.nil?
+                     'gray'
+                   elsif @game.score < 50
+                     'red'
+                   elsif @game.score < 75
+                     'yellow'
+                   else
+                     'green'
     end
 
     @badges = @game.badges.select(:id, :name, :symbol)
-                          .order(award_date: :desc, name: :asc).all
+                   .order(award_date: :desc, name: :asc).all
     @image_folder = @game.id / 1000
   end
 
@@ -45,7 +47,6 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
 
-
     if @game.update!(game_params)
       redirect_to game_path(@game)
     else
@@ -53,7 +54,8 @@ class GamesController < ApplicationController
     end
   end
 
-private
+  private
+
   def game_params
     params.require(:game)
           .permit(:title, :platform_id, :release_date, :publisher_id, :genre_id,
@@ -62,19 +64,13 @@ private
   end
 
   def week_start
-    year = params[:year]
-    unless year
-      year = Game.select(:release_date).order(release_date: :desc).first
+    @year ||= Game.select(:release_date).order(release_date: :desc).first
                   .release_date.cwyear
-    end
-    week = params[:week]
-    unless week
-      week = Game.select(:release_date).order(release_date: :desc)
-                  .where("extract(isoyear from release_date) = ?", year)
+    @week ||= Game.select(:release_date).order(release_date: :desc)
+                  .where('extract(isoyear from release_date) = ?', year)
                   .first.release_date.cweek
-    end
 
-    Date.strptime(year.to_s + week.to_s.rjust(2, '0'), '%G%V')
+    Date.strptime(@year.to_s + @week.to_s.rjust(2, '0'), '%G%V')
   end
 
   def filter_by_week(query)

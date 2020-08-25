@@ -1,72 +1,131 @@
-<p>
-  <%= image_tag("/images/games/#{@image_folder}/#{@game.id}.jpg", class: 'game') %>
-</p>
-<header>
-  <h1 class="game_header"><%= @game.title %></h1>
-  <p class="game_header">
-    <%= image_tag("/images/platform_logos/#{@game.platform.id}.jpg", class: 'platform_logo') %>
+<div class="breadcrumb">
+  <div class="breadcrumb__el">
+    <%= link_to 'Games', years_path %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%=
+      link_to(@game.release_date.cwyear,
+              weeks_path(year: @game.release_date.cwyear))
+    %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    <%=
+      link_to(
+        "Week #{@game.release_date.cweek}, #{@game.release_date.cwyear}",
+        games_path(
+          week: @game.release_date.cweek,
+          year: @game.release_date.cwyear
+        )
+      )
+    %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el"><%= @game.title %></div>
+</div>
+
+<h1><%= @game.title %></h1>
+<div class="game-show-wrapper">
+  <%=
+    image_tag("/images/games/#{@image_folder}/#{@game.id}.jpg",
+              class: 'game-show-artwork')
+  %>
+  <div class="game-show-platform">
+    <%=
+      image_tag("/images/platform_logos/#{@game.platform.id}.jpg",
+                class: 'game-show-platform__logo')
+    %>
     <%= link_to @game.platform.name, platform_path(@game.platform) %>
-  </p>
-</header>
+  </div>
+  <div class="game-show-publisher">
+    <%= link_to @game.publisher.name, publisher_path(@game.publisher) %>
+  </div>
+  <div class="game-show-date">
+    <%= @game.release_date.strftime('%A, %-d %B %Y') %>
+    <%= '?' unless @game.is_date_confirmed %>
+  </div>
+  <div class="game-show-genre">
+    <%= link_to @game.genre.name, genre_path(@game.genre) %>
+  </div>
+  <div class="game-show-rating-wrapper">
+    <%=
+      tag.div(
+        (('N/A' unless @game.score) || @game.score),
+        class: "game-show-rating score #{@score_color}")
+    %>
+    <%=
+      image_tag("/images/esrb_ratings/#{@game.esrb_rating.id}.png",
+                class: 'game-show-esrb')
+    %>
+  </div>
+  <% if @game.franchise %>
+    <div class="game-show-franchise">
+      Part of the
+      <%= link_to @game.franchise.name, franchise_path(@game.franchise) %>
+      franchise
+    </div>
+  <% end %>
 
-<%= tag.div (('N/A' unless @game.score) || @game.score), class: "score #{@score_color}" %>
+  <% if @badges.length > 0 %>
+    <ol class="game-show-badge-list">
+      <% @badges.each do |badge| %>
+        <li class="game-show-badge-list__el">
+          <%= 
+            link_to(
+              badge.symbol, badge_path(badge),
+              class: 'icon symbol block-link'
+            )
+          %>
+          <div class="icon-text">
+            <%= link_to badge.name, badge_path(badge) %>
+          </div>
+        </li>
+      <% end %>
+    </ol>
+  <% end %>
 
-<% if @badges.length > 0 %>
-  <p class="badges">
-    <% @badges.each do |badge| %>
-      <span class="symbol"><%= badge.symbol %></span>
-      <%= link_to badge.name, badge_path(badge) %><br />
-    <% end %>
-  </p>
-<% end %>
 
-<table>
-  <tbody>
-    <tr>
-      <th scope="row">Release Date</th>
-      <td>
-        <%= @game.release_date.strftime('%A, %-d %B %Y') %>
-        <%= '?' unless @game.is_date_confirmed %>
-       </td>
-    </tr>
-    <tr>
-      <th scope="row">Publisher</th>
-      <td>
-        <%= link_to @game.publisher.name, publisher_path(@game.publisher) %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Genre</th>
-      <td><%= link_to @game.genre.name, genre_path(@game.genre) %></td>
-    </tr>
-    <% if @game.franchise %>
-      <tr>
-        <th scope="row">Franchise</th>
-        <td><%= link_to @game.franchise.name, franchise_path(@game.franchise) %></td>
-      </tr>
-    <% end %>
-    <tr>
-      <th scope="row">ESRB Rating</th>
-      <td><%= @game.esrb_rating.name %></td>
-    </tr>
-  </tbody>
-</table>
+  <% if @game.video_link %>
+    <div class="game-show-video-link">
+      <%= 
+        link_to(
+          '🎞️️', @game.video_link,
+          class: 'icon symbol block-link',
+          rel: 'external', target: '_blank'
+        )
+      %>
+      <div class="icon-text">
+        <%= link_to 'Gameplay Video', @game.video_link %>
+      </div>
+    </div>
+  <% end %>
 
-<% if @game.video_link %>
-<p>
-  <span class="symbol">🎞️️</span>
-  <%= link_to 'Gameplay Video', @game.video_link, rel: 'external', target: '_blank' %>
-</p>
-<% end %>
+  <ol class="game-show-action-list">
+    <li class="game-show-action-list__el">
+      <%= 
+        link_to(
+          '️✏️️️', edit_game_path(@game),
+          class: 'icon--small symbol block-link'
+        )
+      %>
+      <div class="icon-text--small">
+        <%= link_to "Edit", edit_game_path(@game) %>
+      </div>
+    </li>
+    <li class="game-show-action-list__el">
+      <%= 
+        link_to(
+          '️🎖️', new_badges_game_path('game[id]': @game.id),
+          class: 'icon--small symbol block-link'
+        )
+      %>
+      <div class="icon-text--small">
+        <%= link_to "Award Badge", new_badges_game_path('game[id]': @game.id) %>
+      </div>
+    </li>
+  </ol>
 
-<p>
-  <span class="symbol">✏️</span> ️<%= link_to "Edit", edit_game_path(@game) %><br />
-  <span class="symbol">🎖️</span> <%= link_to "Award Badge", new_badges_game_path('game[id]': @game.id) %>
-</p>
+</div>
 
-<p>
-  <span class="symbol">➕</span> <%= link_to 'Create New', new_game_path %> </br />
-  <span class="symbol">🗓️</span> <%= link_to 'This Week', games_path(week: @game.release_date.cweek, year: @game.release_date.cwyear) %> <br />
-  <span class="symbol">🔎</span> <%= link_to 'Search', search_path %><br />
-  <span class="symbol">🏠</span> <%= link_to 'Home', root_path %>
-</p>
+<%= link_to '+', new_game_path, class: 'create-button' %>

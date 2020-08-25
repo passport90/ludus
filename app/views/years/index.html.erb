@@ -1,15 +1,15 @@
 <h1>Games</h1>
 
 <% if @years.length > 0 %>
-  <div class="years-nav-wrapper">
+  <ol class="years-nav-wrapper">
     <% @years.each do |year| %>
-      <div class="years-nav">
+      <li class="years-nav">
         <%= link_to year, weeks_path(year: year) %>
-      </div>
+      </li>
     <% end %>
-  </div>
+  </ol>
 <% else %>
-  <p>There are no games.</p>
+  <p class="empty-state">There are no games.</p>
 <% end %>
 </p>
 
