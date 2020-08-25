@@ -43,7 +43,8 @@
   </div>
   <% if @games.length > 0 %>
     <div class="game-index-count">
-      <%= @games.length %> Games
+      <%= @game_count %>
+      Game<%= 's' if @game_count > 1 %>
     </div>
     <ul class="game-index-list">
       <% @games.each do |game| %>

@@ -20,16 +20,14 @@
     Awarded on <%= @badge.award_date.strftime('%A, %-d %B %Y') %>
   </div>
   <div class="badge-show-recipient-title">
-    <% if @badge.is_complete %>
-      Recipients
-    <% else %>
-      Recipients (incomplete)
-    <% end %>
+      Recipient<%= 's' if @game_count > 1 %>
+      <%= '(incomplete)' unless @badge.is_complete %>
   </div>
 
   <% if @games.length > 0 %>
     <div class="game-index-count">
-      <%= @game_count %> Games<%= ", page #{@page + 1}" if @page_count > 1 %>
+      <%= @game_count %>
+      Game<%= 's' if @game_count > 1 %><%= ", page #{@page + 1}" if @page_count > 1 %>
     </div>
     <ul class="game-index-list">
       <% @games.each do |game| %>

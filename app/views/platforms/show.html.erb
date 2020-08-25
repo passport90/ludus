@@ -45,7 +45,8 @@
 
   <% if @games.length > 0 %>
     <div class="game-index-count">
-      <%= @game_count %> Games<%= ", page #{@page + 1}" if @page_count > 1 %>
+      <%= @game_count %>
+      Game<%= 's' if @game_count > 1 %><%= ", page #{@page + 1}" if @page_count > 1 %>
     </div>
 
     <ul class="game-index-list">
