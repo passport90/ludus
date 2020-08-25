@@ -31,13 +31,13 @@
     image_tag("/images/games/#{@image_folder}/#{@game.id}.jpg",
               class: 'game-show-artwork')
   %>
-  <div class="game-show-platform">
+  <a href="<%= platform_path(@game.platform) %>"
+     class="game-show-platform block-link">
     <%=
       image_tag("/images/platform_logos/#{@game.platform.id}.jpg",
                 class: 'game-show-platform__logo')
     %>
-    <%= link_to @game.platform.name, platform_path(@game.platform) %>
-  </div>
+  </a>
   <div class="game-show-publisher">
     <%= link_to @game.publisher.name, publisher_path(@game.publisher) %>
   </div>

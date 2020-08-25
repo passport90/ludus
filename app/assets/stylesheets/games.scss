@@ -118,11 +118,14 @@
     border: solid 1px #d3d3d3;
 }
 
-.game-show-platform > a {
-    font-size: 2em;
+.game-show-platform {
+    display: block;
+    margin-bottom: 1em;
 }
+
 .game-show-platform__logo {
-    height: 1em;
+    display: block;
+    width: 10ch;
 }
 
 .game-show-rating-wrapper {
