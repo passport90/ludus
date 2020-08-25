@@ -2,12 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 /* Game Index */
-.game-index-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .game-index-week {
     font-size: 2em;
     font-weight: bold;
@@ -105,12 +99,6 @@
 }
 
 /* Game Show */
-.game-show-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .game-show-artwork {
     display: block;
     max-width: 500px;

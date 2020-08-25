@@ -5,14 +5,16 @@ class PlatformsController < ApplicationController
 
   def show
     @platform = Platform.find(params[:id])
+    @game_count = @platform.games.count
     items_per_page = 10
     @page = params.fetch(:page, 0).to_i
-    @page_count = (
-      @platform.games.where('score is not null').count.to_f / items_per_page
-    ).ceil
+    @page_count = (@game_count.to_f / items_per_page).ceil
     @games = @platform.games.includes(:badges)
-                      .where('score is not null')
-                      .order(score: :desc, release_date: :desc, title: :asc)
+                      .order(
+                        '"games"."score" DESC NULLS LAST, '\
+                        '"games"."release_date" DESC, '\
+                        '"games"."title" DESC'
+                      )
                       .offset(@page * items_per_page).limit(items_per_page)
                       .limit(items_per_page).all
   end

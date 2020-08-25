@@ -34,6 +34,8 @@ h1 {
   text-align: center;
   font-size: 4em;
   font-weight: normal;
+  margin-right: 1em;
+  margin-left: 1em;
 }
 
 table {
@@ -222,6 +224,37 @@ h1.home-name {
 
 .breadcrumb__el {
     margin: 0 0.5em;
+}
+
+/* Center Wrapper */
+.center-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Long List */
+.long-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.long-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    height: 44em;
+}
+
+.long-list__el {
+    margin: 0.5em 0;
 }
 
 /* Action List */

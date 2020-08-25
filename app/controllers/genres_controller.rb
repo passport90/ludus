@@ -1,15 +1,21 @@
 class GenresController < ApplicationController
   def index
-    @genres = Genre.select(:id, :name).order(:path).all
+    items_per_page = 60
+    @page = params.fetch(:page, 0).to_i
+    @page_count = (Genre.count.to_f / items_per_page).ceil
+    @genres = Genre.select(:id, :name).order(:path)
+                   .offset(@page * items_per_page).limit(items_per_page).all
   end
 
   def show
     @genre = Genre.find(params[:id])
+    @game_count = @genre.games.count
+    items_per_page = 10
     @page = params.fetch(:page, 0).to_i
-    @page_count = (@genre.games.count.to_f / 10).ceil
+    @page_count = (@genre_count.to_f / items_per_page).ceil
     @games = @genre.games.includes(:platform, :badges)
                    .order(release_date: :desc, title: :asc)
-                   .offset(@page * 10).limit(10)
+                   .offset(@page * items_per_page).limit(items_per_page)
                    .all
   end
 
@@ -25,7 +31,24 @@ class GenresController < ApplicationController
     redirect_to genres_path
   end
 
-private
+  def edit
+    @genre = Genre.find(params[:id])
+  end
+
+  def update
+    @genre = Genre.find(params[:id])
+    @genre.assign_attributes(genre_params)
+    @genre.path = to_path(@genre.name)
+
+    if @genre.update!(genre_params)
+      redirect_to genre_path(@genre)
+    else
+      render 'edit'
+    end
+  end
+
+  private
+
   def genre_params
     params.require(:genre).permit(:name, :path)
   end

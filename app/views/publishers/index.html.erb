@@ -1,10 +1,10 @@
 <h1>Publishers</h1>
 
 <% if @publishers.length > 0 %>
-  <div class="publisher-list-wrapper">
-    <ol class="publisher-list">
+  <div class="long-list-wrapper">
+    <ol class="long-list">
       <% @publishers.each do |publisher| %>
-        <li class="publisher-list__el">
+        <li class="long-list__el">
           <%= 
             link_to publisher.name, publisher_path(publisher)
           %>

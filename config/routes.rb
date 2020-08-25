@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :badges, only: %i[index show new create edit update]
   resources :games, only: %i[index show new create edit update]
   resources :esrb_ratings, only: %i[index new create]
-  resources :genres, only: %i[index show new create]
+  resources :genres, only: %i[index show new create edit update]
   resources :platforms, only: %i[index show new create edit update]
   resources :publishers, only: %i[index show new create edit update]
   get '/search', to: 'application#search', as: 'search'

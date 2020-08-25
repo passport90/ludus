@@ -10,7 +10,7 @@
 
 <h1> <%= @platform.name %> </h1>
 
-<div class="platform-show-wrapper">
+<div class="center-wrapper">
   <%= image_tag("/images/platform_logos/#{@platform.id}.jpg",
                 class: 'platform-show-logo')
   %>
@@ -18,7 +18,7 @@
                 class: 'platform-show-photo')
   %>
   <div class="platform-show-publisher">
-    <%= link_to @platform.publisher.name, publisher_path(publisher) %>
+    <%= link_to @platform.publisher.name, publisher_path(@platform.publisher) %>
   </div>
   <div class="platform-show-date">
     <%=
@@ -45,7 +45,7 @@
 
   <% if @games.length > 0 %>
     <div class="game-index-count">
-      Top Games<%= ", page #{@page + 1}" if @page_count > 1 %>
+      <%= @game_count %> Games<%= ", page #{@page + 1}" if @page_count > 1 %>
     </div>
 
     <ul class="game-index-list">
