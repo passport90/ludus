@@ -2,16 +2,16 @@
 <h1>Platforms</h1>
 
 <% if @platforms.length > 0 %>
-  <ol class="platform-list">
+  <ol class="jumbotron-list">
     <% @platforms.each do |platform| %>
-      <li class="platform-list__el">
+      <li class="jumbotron-list__el">
         <a href="<%= platform_path(platform) %>"
-           class="platform-list__el__logo">
+           class="jumbotron-list__el__logo">
           <%= image_tag("/images/platform_logos/#{platform.id}.jpg") %>
         </a>
         <%=
           link_to(platform.name, platform_path(platform), 
-                  class: 'platform-list__el__text')
+                  class: 'jumbotron-list__el__text')
         %>
       </li>
     <% end %>

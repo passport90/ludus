@@ -13,7 +13,7 @@ class FranchisesController < ApplicationController
     @game_count = @franchise.games.count
     items_per_page = 10
     @page = params.fetch(:page, 0).to_i
-    @page_count = (@franchise.games.count.to_f / items_per_page).ceil
+    @page_count = (@game_count.to_f / items_per_page).ceil
     @games = @franchise.games.includes(:platform, :badges)
                        .order(release_date: :desc, title: :asc)
                        .offset(@page * items_per_page).limit(items_per_page)

@@ -1,15 +1,21 @@
 <h1>ESRB Ratings</h1>
 
-<p>
-  <span class="symbol">🏠</span> <%= link_to 'Home', root_path %><br />
-  <span class="symbol">➕</span> <%= link_to 'Create New', new_esrb_rating_path %>
-</p>
+<% if @esrb_ratings.length > 0 %>
+  <ol class="jumbotron-list">
+    <% @esrb_ratings.each do |esrb_rating| %>
+      <li class="jumbotron-list__el">
+        <div class="jumbotron-list__el__logo">
+          <%= image_tag("/images/esrb_ratings/#{esrb_rating.id}.png") %>
+        </div>
+        <div class="jumbotron-list__el__text">
+          <%= esrb_rating.name %>
+        </div>
+      </li>
+    <% end %>
+  </ol>
+<% else %>
+  <p class="empty-state">There are no ESRB ratings.</p>
+<% end %>
 
-<p>
-  <% @esrb_ratings.each do |esrb_rating| %>
-    <%= esrb_rating.name %> (<%= esrb_rating.symbol %>)<br />
-  <% end %>
-</p>
 
-<p>
-</p>
+<%= link_to '+', new_esrb_rating_path, class: 'create-button' %>

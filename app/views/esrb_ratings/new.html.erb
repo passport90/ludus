@@ -1,19 +1,27 @@
+<div class="breadcrumb">
+  <div class="breadcrumb__el">
+    <%= link_to 'ESRB Ratingss', esrb_ratings_path %>
+  </div>
+  <div class="breadcrumb__sep">></div>
+  <div class="breadcrumb__el">
+    New ESRB Rating
+  </div>
+</div>
+
 <h1>New ESRB Rating</h1>
 
-<%= form_with model: @esrb_rating do |f| %>
-  <p>
-    <%= f.label(:name, "Name") %> <br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label(:symbol, "Symbol") %> <br />
-    <%= f.text_field :symbol %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
-
-<p>
-  <span class="symbol">❌</span> <%= link_to 'Cancel', esrb_ratings_path %>
-</p>
+<div class="form">
+  <%= form_with model: @esrb_rating do |f| %>
+    <div class="form__el">
+      <%= f.label(:name, "Name") %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="form__el">
+      <%= f.label(:symbol, "Symbol") %>
+      <%= f.text_field :symbol %>
+    </div>
+    <div class="form__el--submit">
+      <%= f.submit "Create" %>
+    </div>
+  <% end %>
+</div>

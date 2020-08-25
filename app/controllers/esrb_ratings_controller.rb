@@ -1,6 +1,6 @@
 class EsrbRatingsController < ApplicationController
   def index
-    @esrb_ratings = EsrbRating.select(:name, :symbol).order(:name).all
+    @esrb_ratings = EsrbRating.select(:id, :name, :symbol).order(:name).all
   end
 
   def new
@@ -14,7 +14,8 @@ class EsrbRatingsController < ApplicationController
     redirect_to esrb_ratings_path
   end
 
-private
+  private
+
   def rating_params
     params.require(:esrb_rating).permit(:name, :symbol)
   end
