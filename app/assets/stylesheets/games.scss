@@ -25,9 +25,7 @@
 }
 
 .game-index-list {
-    list-style: none;
     width: 1000px;
-    padding: 0;
     display: flex;
     flex-direction: column;
     border: solid 1px #d3d3d3;
@@ -146,8 +144,6 @@
 }
 
 .game-show-badge-list {
-    list-style: none;
-    padding: 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
