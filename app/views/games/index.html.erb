@@ -8,7 +8,7 @@
   </div>
   <div class="breadcrumb__sep">></div>
   <div class="breadcrumb__el">
-    Week <%= @week %>, <%= @year %>
+    Week <%= @week %>
   </div>
 </div>
 
@@ -43,8 +43,8 @@
   </div>
   <% if @games.length > 0 %>
     <div class="game-index-count">
-      <%= @game_count %>
-      Game<%= 's' if @game_count > 1 %>
+      <%= @games.length %>
+      Game<%= 's' if @games.length > 1 %>
     </div>
     <ul class="game-index-list">
       <% @games.each do |game| %>

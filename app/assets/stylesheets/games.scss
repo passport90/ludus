@@ -38,6 +38,10 @@
     border-bottom: solid 1px #d3d3d3;
 }
 
+.game-index-list__el:last-child {
+    border-bottom: none;
+}
+
 .game-index-list__el__image-wrapper {
     width: 200px;
     display: flex;
