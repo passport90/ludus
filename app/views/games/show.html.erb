@@ -13,7 +13,7 @@
   <div class="breadcrumb__el">
     <%=
       link_to(
-        "Week #{@game.release_date.cweek}, #{@game.release_date.cwyear}",
+        "Week #{@game.release_date.cweek}",
         games_path(
           week: @game.release_date.cweek,
           year: @game.release_date.cwyear
@@ -85,19 +85,9 @@
     </ol>
   <% end %>
 
-
   <% if @game.video_link %>
-    <div class="game-show-video-link">
-      <%= 
-        link_to(
-          '🎞️️', @game.video_link,
-          class: 'icon symbol block-link',
-          rel: 'external', target: '_blank'
-        )
-      %>
-      <div class="icon-text">
-        <%= link_to 'Gameplay Video', @game.video_link %>
-      </div>
+    <div class="game-show-embed">
+      <%= raw @game.video_link %>
     </div>
   <% end %>
 
