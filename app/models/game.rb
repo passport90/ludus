@@ -6,5 +6,5 @@ class Game < ApplicationRecord
   belongs_to :franchise, optional: true
   has_and_belongs_to_many :badges, -> { order(award_date: 'desc', name: 'asc') }
 
-  nilify_blanks only: [:video_link]
+  nilify_blanks
 end
