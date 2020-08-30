@@ -34,6 +34,14 @@ class GamesController < ApplicationController
   end
 
   def create
+    # Helper for links
+    if params[:game][:video_youtube_id].start_with?('https://')
+      youtube_prefix_len = 'https://www.youtube.com/watch?v='.size
+      params[:game][:video_youtube_id] = (
+        params[:game][:video_youtube_id][youtube_prefix_len..-1]
+      )
+    end
+    
     @game = Game.new(game_params)
 
     @game.save
@@ -45,6 +53,14 @@ class GamesController < ApplicationController
   end
 
   def update
+    # Helper for links
+    if params[:game][:video_youtube_id].start_with?('https://')
+      youtube_prefix_len = 'https://www.youtube.com/watch?v='.size
+      params[:game][:video_youtube_id] = (
+        params[:game][:video_youtube_id][youtube_prefix_len..-1]
+      )
+    end
+
     @game = Game.find(params[:id])
 
     if @game.update!(game_params)
