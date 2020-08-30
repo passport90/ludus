@@ -85,9 +85,17 @@
     </ol>
   <% end %>
 
-  <% if @game.video_link %>
+  <% if @game.video_youtube_id %>
     <div class="game-show-embed">
-      <%= raw @game.video_link %>
+      <% 
+        embed = '<iframe width="560" height="315" '\
+                'src="https://www.youtube.com/embed/'\
+                "#{@game.video_youtube_id}\" frameborder=\"0\" "\
+                'allow="accelerometer; autoplay; encrypted-media; gyroscope; '\
+                'picture-in-picture" allowfullscreen></iframe>'
+      
+      %>
+      <%= raw embed %>
     </div>
   <% end %>
 

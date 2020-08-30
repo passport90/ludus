@@ -59,7 +59,7 @@ class GamesController < ApplicationController
   def game_params
     params.require(:game)
           .permit(:title, :platform_id, :release_date, :publisher_id, :genre_id,
-                  :esrb_rating_id, :franchise_id, :score, :video_link,
+                  :esrb_rating_id, :franchise_id, :score, :video_youtube_id,
                   :is_date_confirmed)
   end
 
