@@ -255,7 +255,7 @@ h1.home-name {
     flex-direction: column;
     flex-wrap: wrap;
     margin: 0 auto;
-    max-height: 52em;
+    max-height: 54em;
 }
 
 .long-list__el {
