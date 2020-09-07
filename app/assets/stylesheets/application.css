@@ -15,11 +15,11 @@
  */
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-p {
-  font-family: "Helvetica Neue", sans-serif;
+p, li, div {
+    font-family: "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -163,6 +163,7 @@ h1.home-name {
 }
 
 .menu-name > a {
+    font-family: "Futura", sans-serif;
     letter-spacing: 0.2ch;
     text-transform: uppercase;
     font-size: 2em;
