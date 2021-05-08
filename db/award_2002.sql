@@ -123,73 +123,51 @@ and not genres.path <@ 'sports'::ltree
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 2001 PlayStation Game of the Year --
+-- 2002 PlayStation Game of the Year --
 select title, platforms.name as platform, score
 from games
 join platforms on games.platform_id = platforms.id
-where games.release_date >= '2001-01-01'
-and games.release_date < '2002-01-01'
+where games.release_date >= '2002-01-01'
+and games.release_date < '2003-01-01'
 and platforms.name = 'PlayStation'
 and score >= '74'
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 2001 Nintendo 64 Game of the Year --
+-- 2002 PlayStation 2 Game of the Year --
 select title, platforms.name as platform, score
 from games
 join platforms on games.platform_id = platforms.id
-where games.release_date >= '2001-01-01'
-and games.release_date < '2002-01-01'
-and platforms.name = 'Nintendo 64'
-and score >= '74'
-order by score desc, title, platforms.release_date
-limit 10;
-
--- 2001 Dreamcast Game of the Year --
-select title, platforms.name as platform, score
-from games
-join platforms on games.platform_id = platforms.id
-where games.release_date >= '2001-01-01'
-and games.release_date < '2002-01-01'
-and platforms.name = 'Dreamcast'
-and score >= '74'
-order by score desc, title, platforms.release_date
-limit 10;
-
--- 2001 PlayStation 2 Game of the Year --
-select title, platforms.name as platform, score
-from games
-join platforms on games.platform_id = platforms.id
-where games.release_date >= '2001-01-01'
-and games.release_date < '2002-01-01'
+where games.release_date >= '2002-01-01'
+and games.release_date < '2003-01-01'
 and platforms.name = 'PlayStation 2'
 and score >= '74'
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 2001 Xbox Game of the Year --
+-- 2002 Xbox Game of the Year --
 select title, platforms.name as platform, score
 from games
 join platforms on games.platform_id = platforms.id
-where games.release_date >= '2001-01-01'
-and games.release_date < '2002-01-01'
+where games.release_date >= '2002-01-01'
+and games.release_date < '2003-01-01'
 and platforms.name = 'Xbox'
 and score >= '74'
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 2001 Nintendo GameCube Game of the Year --
+-- 2002 Nintendo GameCube Game of the Year --
 select title, platforms.name as platform, score
 from games
 join platforms on games.platform_id = platforms.id
-where games.release_date >= '2001-01-01'
-and games.release_date < '2002-01-01'
+where games.release_date >= '2002-01-01'
+and games.release_date < '2003-01-01'
 and platforms.name = 'Nintendo GameCube'
 and score >= '74'
 order by score desc, title, platforms.release_date
 limit 10;
 
--- 2001 Game of the Year --
+-- 2002 Game of the Year --
 select title, platforms.name as platform, score
 from games
 join platforms on games.platform_id = platforms.id
