@@ -171,8 +171,8 @@ limit 10;
 select title, platforms.name as platform, score
 from games
 join platforms on games.platform_id = platforms.id
-where games.release_date >= '2001-01-01'
-and games.release_date < '2002-01-01'
+where games.release_date >= '2002-01-01'
+and games.release_date < '2003-01-01'
 and score >= '74'
 order by score desc, title, platforms.release_date
 limit 10;
