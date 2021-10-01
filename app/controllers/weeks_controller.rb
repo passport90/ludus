@@ -8,7 +8,7 @@ class WeeksController < ApplicationController
     end
     weeks_nums = Game.order(week: :asc).distinct
                 .where("extract(year from release_date) = ?", @year)
-                .pluck("extract(week from release_date) as week").map(&:to_i)
+                .pluck(Arel.sql("extract(week from release_date) as week")).map(&:to_i)
     @weeks = weeks_nums.map do |week_num|
       {
         week_num: week_num,
