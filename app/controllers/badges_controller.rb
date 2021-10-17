@@ -46,7 +46,7 @@ class BadgesController < ApplicationController
 
   def first_year
     Badge.order(year: :desc).distinct
-         .pluck('extract(year from award_date) as year').first.to_i
+         .pluck(Arel.sql('extract(year from award_date) as year')).first.to_i
   end
 
   def badge_params
